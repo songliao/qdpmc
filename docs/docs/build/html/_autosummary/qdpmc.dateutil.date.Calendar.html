@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.dateutil.date.Calendar &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="qdpmc.engine.monte_carlo.MonteCarlo" href="qdpmc.engine.monte_carlo.MonteCarlo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#date-utilities">Date Utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API References</a> &raquo;</li>
+        
+      <li>qdpmc.dateutil.date.Calendar</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_autosummary/qdpmc.dateutil.date.Calendar.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qdpmc-dateutil-date-calendar">
+<h1>qdpmc.dateutil.date.Calendar<a class="headerlink" href="#qdpmc-dateutil-date-calendar" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qdpmc.dateutil.date.</span></span><span class="sig-name descname"><span class="pre">Calendar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">holiday_rule=&lt;function</span> <span class="pre">_is_china_holidays&gt;</span></em>, <em class="sig-param"><span class="pre">other_holidays=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>([holiday_rule, other_holidays])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.add_holiday_rule" title="qdpmc.dateutil.date.Calendar.add_holiday_rule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_holiday_rule</span></code></a>(holiday_rule)</p></td>
+<td><p>Add holiday rules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.add_holidays" title="qdpmc.dateutil.date.Calendar.add_holidays"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_holidays</span></code></a>(holidays)</p></td>
+<td><p>Add holidays to holiday rules.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.is_trading" title="qdpmc.dateutil.date.Calendar.is_trading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_trading</span></code></a>(date)</p></td>
+<td><p>Return if <em>date</em> trades.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.num_trading_days_between" title="qdpmc.dateutil.date.Calendar.num_trading_days_between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_trading_days_between</span></code></a>(start, end[, count_end])</p></td>
+<td><p>Return number of trading days between two dates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.offset" title="qdpmc.dateutil.date.Calendar.offset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">offset</span></code></a>(date, n)</p></td>
+<td><p>Return date of trading day <em>n</em> days after <em>date</em>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.periodic" title="qdpmc.dateutil.date.Calendar.periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">periodic</span></code></a>(start, period, count[, if_close, force])</p></td>
+<td><p>Generate periodical trading dates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.to_scalar" title="qdpmc.dateutil.date.Calendar.to_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_scalar</span></code></a>(date_arr, start)</p></td>
+<td><p>Convert dates into integers given a start date.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.dateutil.date.Calendar.trading_days_between" title="qdpmc.dateutil.date.Calendar.trading_days_between"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trading_days_between</span></code></a>(start, end[, endpoints])</p></td>
+<td><p>Return a list of trading days between <em>start</em> and <em>end</em>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.add_holiday_rule">
+<span class="sig-name descname"><span class="pre">add_holiday_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">holiday_rule</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.add_holiday_rule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.add_holiday_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add holiday rules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>holiday_rule</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a>) – A function that converts datetime.date to bool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.add_holidays">
+<span class="sig-name descname"><span class="pre">add_holidays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">holidays</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.add_holidays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.add_holidays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add holidays to holiday rules. <em>holidays</em> should be iterable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.is_trading">
+<span class="sig-name descname"><span class="pre">is_trading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.is_trading"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.is_trading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if <em>date</em> trades.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.num_trading_days_between">
+<span class="sig-name descname"><span class="pre">num_trading_days_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_end</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.num_trading_days_between"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.num_trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of trading days between two dates. If these dates
+are identical, return 0. <em>count_end</em> controls whether to count the
+end date.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return date of trading day <em>n</em> days after <em>date</em>. <em>n</em> can be
+negative but must be an integer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – </p></li>
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a> – The <em>n</em>-th trading date after <em>date</em>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.periodic">
+<span class="sig-name descname"><span class="pre">periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">if_close</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'next'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a></span></span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.periodic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.periodic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate periodical trading dates. Duplicates will be dropped so
+the output list may be shorter than <em>count</em>. To force the length of
+output to <em>count</em>, set <em>force</em> to <em>True</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – The first date of the array of periodic trading dates.</p></li>
+<li><p><strong>period</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>) – String like ‘Xm’, ‘Xw’, and ‘Xd’, where X</p></li>
+<li><p><strong>count</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>) – </p></li>
+<li><p><strong>if_close</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.9)"><span class="xref std std-ref">bool</span></a>) – </p></li>
+<li><p><strong>force</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.9)"><span class="xref std std-ref">bool</span></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>..ipython:: python</p>
+<blockquote>
+<div><p>import datetime
+calendar = qm.Calendar()
+start_date = datetime.date(2019, 1, 31)
+calendar.periodic(start, ‘1m’, 13)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.to_scalar">
+<span class="sig-name descname"><span class="pre">to_scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a></span></span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.to_scalar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.to_scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert dates into integers given a start date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>date_arr</strong> (<a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.21)"><span>array_like</span></a>) – An array of datetime.date objects.</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – The start date.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> – A list of integers.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.dateutil.date.Calendar.trading_days_between">
+<span class="sig-name descname"><span class="pre">trading_days_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><span class="pre">datetime.date</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoints</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)"><span class="pre">bool</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><span class="pre">list</span></a></span></span><a class="reference internal" href="../_modules/qdpmc/dateutil/date.html#Calendar.trading_days_between"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.dateutil.date.Calendar.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of trading days between <em>start</em> and <em>end</em>. Endpoints
+are counted only if they are trading.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – </p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – </p></li>
+<li><p><strong>endpoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.9)"><span class="xref std std-ref">bool</span></a>) – Whether to count <em>start</em> and <em>end</em> if they are trading dates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">list</span></code></a> – A list of trading dates.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> are counted _only_ if they are trading dates.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qdpmc.engine.monte_carlo.MonteCarlo.html" class="btn btn-neutral float-left" title="qdpmc.engine.monte_carlo.MonteCarlo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.engine.monte_carlo &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>qdpmc.engine.monte_carlo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qdpmc.engine.monte_carlo</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qdpmc.structures.base</span> <span class="kn">import</span> <span class="n">StructureMC</span>
+<span class="kn">from</span> <span class="nn">qdpmc.model.market_process</span> <span class="kn">import</span> <span class="n">BlackScholes</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">wrap_non_picklable_objects</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">cpu_count</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MonteCarlo&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_run_one_time_caller</span><span class="p">(</span>
+        <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">option</span><span class="p">:</span> <span class="n">StructureMC</span><span class="p">,</span> <span class="n">process</span><span class="p">:</span> <span class="n">BlackScholes</span><span class="p">,</span>
+        <span class="n">request_greeks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fd_steps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fd_scheme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a function that takes *seed* as its sole parameter. Given a seed,</span>
+<span class="sd">    the returned function generates random numbers, calculate requested fields,</span>
+<span class="sd">    and return the values.&quot;&quot;&quot;</span>
+    <span class="n">_coordinator</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">coordinator</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">process</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">_coordinator</span><span class="o">.</span><span class="n">df</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">request_greeks</span><span class="p">:</span>
+        <span class="c1"># if calculation of Greek letters is not requested,</span>
+        <span class="c1"># then this function simply simulates random paths</span>
+        <span class="c1"># and computes the present value.</span>
+        <span class="k">def</span> <span class="nf">_calc</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+            <span class="n">eps</span> <span class="o">=</span> <span class="n">_coordinator</span><span class="o">.</span><span class="n">generate_eps</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">_coordinator</span><span class="o">.</span><span class="n">paths_given_eps</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">_str_to_int</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;central&#39;</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;forward&#39;</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;backward&#39;</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown finite-different scheme: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">fd_steps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fd_steps</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ds</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fd_scheme</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fd_scheme</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Rho</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Vega</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Delta&#39;</span><span class="p">,</span> <span class="s1">&#39;Rho&#39;</span><span class="p">,</span> <span class="s1">&#39;Vega&#39;</span><span class="p">]:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">fd_scheme</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_str_to_int</span><span class="p">(</span><span class="n">fd_scheme</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="n">fd_scheme</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">ds</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dv</span> <span class="o">=</span> <span class="n">fd_steps</span><span class="p">[</span><span class="s1">&#39;ds&#39;</span><span class="p">],</span> <span class="n">fd_steps</span><span class="p">[</span><span class="s1">&#39;dr&#39;</span><span class="p">],</span> <span class="n">fd_steps</span><span class="p">[</span><span class="s1">&#39;dv&#39;</span><span class="p">]</span>
+        <span class="n">dss</span><span class="p">,</span> <span class="n">drs</span><span class="p">,</span> <span class="n">dvs</span> <span class="o">=</span> <span class="n">fd_scheme</span><span class="p">[</span><span class="s1">&#39;Delta&#39;</span><span class="p">],</span> <span class="n">fd_scheme</span><span class="p">[</span><span class="s1">&#39;Rho&#39;</span><span class="p">],</span> <span class="n">fd_scheme</span><span class="p">[</span><span class="s1">&#39;Vega&#39;</span><span class="p">]</span>
+        <span class="n">ds_sq</span> <span class="o">=</span> <span class="n">ds</span> <span class="o">*</span> <span class="n">ds</span>
+
+        <span class="k">def</span> <span class="nf">_calc</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+            <span class="n">eps</span> <span class="o">=</span> <span class="n">_coordinator</span><span class="o">.</span><span class="n">generate_eps</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+            <span class="n">base_path</span> <span class="o">=</span> <span class="n">_coordinator</span><span class="o">.</span><span class="n">paths_given_eps</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
+            <span class="n">shifted_path</span> <span class="o">=</span> <span class="n">_coordinator</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span>
+                <span class="n">paths</span><span class="o">=</span><span class="n">base_path</span><span class="p">,</span>
+                <span class="n">ds</span><span class="o">=</span><span class="n">ds</span><span class="p">,</span> <span class="n">dr</span><span class="o">=</span><span class="n">dr</span><span class="p">,</span> <span class="n">dv</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span>
+            <span class="p">)</span>
+
+            <span class="c1"># pv, delta and gamma</span>
+            <span class="n">pv</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+            <span class="n">pv_s_plus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;S plus&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">)</span>
+            <span class="n">pv_s_minus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;S minus&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">dss</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># central difference</span>
+                <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_s_plus</span> <span class="o">-</span> <span class="n">pv_s_minus</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ds</span><span class="p">)</span> <span class="o">/</span> <span class="n">option</span><span class="o">.</span><span class="n">spot</span>
+            <span class="k">elif</span> <span class="n">dss</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># forward difference</span>
+                <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_s_plus</span> <span class="o">-</span> <span class="n">pv</span><span class="p">)</span> <span class="o">/</span> <span class="n">ds</span> <span class="o">/</span> <span class="n">option</span><span class="o">.</span><span class="n">spot</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># backward difference</span>
+                <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv</span> <span class="o">-</span> <span class="n">pv_s_minus</span><span class="p">)</span> <span class="o">/</span> <span class="n">ds</span> <span class="o">/</span> <span class="n">option</span><span class="o">.</span><span class="n">spot</span>
+
+            <span class="c1"># gamma can only be calculated with central difference</span>
+            <span class="n">gamma</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_s_plus</span> <span class="o">+</span> <span class="n">pv_s_minus</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pv</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+                    <span class="n">ds_sq</span> <span class="o">*</span> <span class="n">option</span><span class="o">.</span><span class="n">spot</span> <span class="o">*</span> <span class="n">option</span><span class="o">.</span><span class="n">spot</span>
+            <span class="p">)</span>
+
+            <span class="c1"># rho</span>
+            <span class="k">if</span> <span class="n">drs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># central difference</span>
+                <span class="n">pv_r_plus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span>
+                    <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;R plus&#39;</span><span class="p">],</span> <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;DF plus&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">pv_r_minus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span>
+                    <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;R minus&#39;</span><span class="p">],</span> <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;DF minus&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">rho</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_r_plus</span> <span class="o">-</span> <span class="n">pv_r_minus</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dr</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">drs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># forward difference</span>
+                <span class="n">pv_r_plus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span>
+                    <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;R plus&#39;</span><span class="p">],</span> <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;DF plus&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">rho</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_r_plus</span> <span class="o">-</span> <span class="n">pv</span><span class="p">)</span> <span class="o">/</span> <span class="n">dr</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># backward difference</span>
+                <span class="n">pv_r_minus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span>
+                    <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;R minus&#39;</span><span class="p">],</span> <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;DF minus&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">rho</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv</span> <span class="o">-</span> <span class="n">pv_r_minus</span><span class="p">)</span> <span class="o">/</span> <span class="n">dr</span>
+
+            <span class="c1"># vega</span>
+            <span class="k">if</span> <span class="n">dvs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># central difference</span>
+                <span class="n">pv_v_plus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;V plus&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">)</span>
+                <span class="n">pv_v_minus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;V minus&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">)</span>
+                <span class="n">vega</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_v_plus</span> <span class="o">-</span> <span class="n">pv_v_minus</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dv</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dvs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># forward difference</span>
+                <span class="n">pv_v_plus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;V plus&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">)</span>
+                <span class="n">vega</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_v_plus</span> <span class="o">-</span> <span class="n">pv</span><span class="p">)</span> <span class="o">/</span> <span class="n">dv</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># backward difference</span>
+                <span class="n">pv_v_minus</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span><span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;V minus&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">)</span>
+                <span class="n">vega</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv</span> <span class="o">-</span> <span class="n">pv_v_minus</span><span class="p">)</span> <span class="o">/</span> <span class="n">dv</span>
+
+            <span class="n">pv_next_day</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">pv_log_paths</span><span class="p">(</span>
+                <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;Paths next day&#39;</span><span class="p">],</span> <span class="n">shifted_path</span><span class="p">[</span><span class="s1">&#39;DF next day&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">pv_next_day</span> <span class="o">-</span> <span class="n">pv</span><span class="p">)</span> <span class="o">/</span> <span class="n">process</span><span class="o">.</span><span class="n">day_counter</span>
+
+            <span class="k">return</span> <span class="n">pv</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">vega</span><span class="p">,</span> <span class="n">theta</span>
+
+    <span class="n">_calc</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Run 1 time of Monte Carlo simulation given a random seed.</span>
+<span class="s2">    Parameters: </span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">_calc</span>
+
+
+<span class="k">def</span> <span class="nf">joblib_caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">iterator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">wrap_non_picklable_objects</span><span class="p">(</span><span class="n">func</span><span class="p">))</span>
+    <span class="k">with</span> <span class="n">Parallel</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<div class="viewcode-block" id="MonteCarlo"><a class="viewcode-back" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html#qdpmc.engine.monte_carlo.MonteCarlo">[docs]</a><span class="k">class</span> <span class="nc">MonteCarlo</span><span class="p">:</span>
+    <span class="n">most_recent_entropy</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_most_recent_entropy</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;The most recently used entropy.&quot;</span>
+    <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">caller</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caller</span>
+
+    <span class="nd">@caller</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">caller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_caller</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="nd">@caller</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">caller</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_caller</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">caller</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> \
+        <span class="sd">&quot;&quot;&quot;Default caller used to implement Monte Carlo simulation.</span>
+<span class="sd">        if set to None, *joblib.Parallel* will be used.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_iter</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A Monte Carlo engine for valuing path-dependent options.</span>
+
+<span class="sd">        Parameters regarding the simulation are specified here. This engine implements</span>
+<span class="sd">        vectorization, which significantly enhances algorithm speed.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        batch_size : int</span>
+<span class="sd">            An integer telling the engine how many paths should be generated in each</span>
+<span class="sd">            iteration.</span>
+<span class="sd">        num_iter : int</span>
+<span class="sd">            Number of iterations. The product of *batch_size* and *num_iter* is the total</span>
+<span class="sd">            number of paths generated.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_iter</span> <span class="o">=</span> <span class="n">num_iter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_most_recent_entropy</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_caller</span> <span class="o">=</span> <span class="n">caller</span>
+
+<div class="viewcode-block" id="MonteCarlo.calc"><a class="viewcode-back" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html#qdpmc.engine.monte_carlo.MonteCarlo.calc">[docs]</a>    <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="n">StructureMC</span><span class="p">,</span> <span class="n">process</span><span class="p">:</span> <span class="n">BlackScholes</span><span class="p">,</span>
+             <span class="n">request_greeks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fd_steps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fd_scheme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">entropy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">caller_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculates the present value of an option given a market process.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        option :</span>
+<span class="sd">            The option structure that needs to be calculated.</span>
+<span class="sd">        process :</span>
+<span class="sd">            An object containing information about the process</span>
+<span class="sd">            driving the dynamics of the underlying asset. Currently this value</span>
+<span class="sd">            must be a BlackScholes object.</span>
+<span class="sd">        request_greeks : bool</span>
+<span class="sd">            Whether to calculate and return Greek letters.</span>
+<span class="sd">        fd_steps : dict</span>
+<span class="sd">            A dictionary controlling steps of finite difference.</span>
+<span class="sd">            Default is None, corresponding to</span>
+<span class="sd">            *{&quot;ds&quot;: 0.01, dr: &quot;0.0001&quot;, dv: &quot;0.01&quot;}*. Note that *ds* is in log</span>
+<span class="sd">            scale.</span>
+<span class="sd">        fd_scheme : dict</span>
+<span class="sd">            Scheme of finite difference for calculating Greek</span>
+<span class="sd">            letters. Default is</span>
+<span class="sd">            *{&quot;Delta&quot;: &quot;central&quot;, &quot;Rho&quot;: &quot;central&quot;, &quot;Vega&quot;: &quot;central&quot;}*. This</span>
+<span class="sd">            does not affect Gamma, which is always calculated using the central</span>
+<span class="sd">            difference scheme.</span>
+<span class="sd">        entropy : int or None</span>
+<span class="sd">            Controls random numbers. Must be an integer.</span>
+<span class="sd">        caller : callable</span>
+<span class="sd">            caller used to implement computation. Default is None,</span>
+<span class="sd">            corresponding to *self.caller*. *caller* must take at least two</span>
+<span class="sd">            arguments:</span>
+<span class="sd">            *caller(calc_once_give_seed, seed list, ...)*. Moreover, caller</span>
+<span class="sd">            should return a list of results, not a scalar. See below for more</span>
+<span class="sd">            details.</span>
+<span class="sd">        caller_args : dict</span>
+<span class="sd">            parameters passed to caller. Default is None, equivalent to</span>
+<span class="sd">            *dict(n_jobs=cpu_counts)*.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        scalar or dict</span>
+<span class="sd">            PV or dict of Greek letters.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        The default caller is roughly equivalent to:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            def caller(calc, seedsequence, /, **kwargs):</span>
+<span class="sd">                calc = joblib.delayed(calc)</span>
+<span class="sd">                if &quot;n_jobs&quot; not in kwargs:</span>
+<span class="sd">                    kwargs[&quot;n_jobs&quot;] = cpu_counts()</span>
+<span class="sd">                with joblib.Parallel(**kwargs) as parallel:</span>
+<span class="sd">                    res = parallel(calc(seed) for seed in seedsequence)</span>
+<span class="sd">                return res</span>
+
+<span class="sd">        To implement Monte Carlo with your own caller, for example one with</span>
+<span class="sd">        no parallel computation, define the caller as follows:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            def mycaller(calc, seedsequence):</span>
+<span class="sd">                return [calc(s) for s in seedsequence]</span>
+
+<span class="sd">        You may also set the default caller so you do not need to specify</span>
+<span class="sd">        ``caller`` every time ``calc`` is called.</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            mc.caller = mycaller</span>
+
+<span class="sd">        To revert to the joblib caller, delete the caller or set it to ``None``:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            del mc.caller</span>
+<span class="sd">            mc.caller == None  # True&quot;&quot;&quot;</span>
+
+        <span class="n">ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">SeedSequence</span><span class="p">(</span><span class="n">entropy</span><span class="p">)</span>
+        <span class="c1"># update entropy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_most_recent_entropy</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">entropy</span>
+        <span class="c1"># probability of colliding pairs = n^2/(2^128)</span>
+        <span class="n">subs</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_iter</span><span class="p">)</span>
+        <span class="c1"># _calc is the function that is called each iteration</span>
+        <span class="n">_calc</span> <span class="o">=</span> <span class="n">_run_one_time_caller</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">option</span><span class="p">,</span> <span class="n">process</span><span class="p">,</span>
+                                     <span class="n">request_greeks</span><span class="p">,</span> <span class="n">fd_steps</span><span class="p">,</span> <span class="n">fd_scheme</span><span class="p">)</span>
+        <span class="c1"># implement computation</span>
+        <span class="k">if</span> <span class="n">caller_args</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">caller_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">caller</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">caller</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_caller</span>
+        <span class="k">if</span> <span class="n">caller</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;n_jobs&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">caller_args</span><span class="p">:</span>
+                <span class="n">caller_args</span><span class="p">[</span><span class="s2">&quot;n_jobs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">joblib_caller</span><span class="p">(</span><span class="n">_calc</span><span class="p">,</span> <span class="n">subs</span><span class="p">,</span> <span class="o">**</span><span class="n">caller_args</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">caller</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;caller must be callable or None&quot;</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">caller</span><span class="p">(</span><span class="n">_calc</span><span class="p">,</span> <span class="n">subs</span><span class="p">,</span> <span class="o">**</span><span class="n">caller_args</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request_greeks</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">_pv</span><span class="p">,</span> <span class="n">_delta</span><span class="p">,</span> <span class="n">_gamma</span><span class="p">,</span> <span class="n">_rho</span><span class="p">,</span> <span class="n">_vega</span><span class="p">,</span> <span class="n">_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">PV</span><span class="o">=</span><span class="n">_pv</span><span class="p">,</span> <span class="n">Delta</span><span class="o">=</span><span class="n">_delta</span><span class="p">,</span> <span class="n">Gamma</span><span class="o">=</span><span class="n">_gamma</span><span class="p">,</span>
+                    <span class="n">Rho</span><span class="o">=</span><span class="n">_rho</span><span class="p">,</span> <span class="n">Vega</span><span class="o">=</span><span class="n">_vega</span><span class="p">,</span> <span class="n">Theta</span><span class="o">=</span><span class="n">_theta</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MonteCarlo.single_iter_caller"><a class="viewcode-back" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html#qdpmc.engine.monte_carlo.MonteCarlo.single_iter_caller">[docs]</a>    <span class="k">def</span> <span class="nf">single_iter_caller</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="n">StructureMC</span><span class="p">,</span> <span class="n">process</span><span class="p">:</span> <span class="n">BlackScholes</span><span class="p">,</span>
+            <span class="n">request_greeks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fd_steps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fd_scheme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This returns a function that takes *seed* as its sole parameter.</span>
+<span class="sd">        Given a random seed, it generates random numbers, computes requested</span>
+<span class="sd">        values, and returns them.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_run_one_time_caller</span><span class="p">(</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="n">option</span><span class="p">,</span>
+            <span class="n">process</span><span class="o">=</span><span class="n">process</span><span class="p">,</span>
+            <span class="n">request_greeks</span><span class="o">=</span><span class="n">request_greeks</span><span class="p">,</span>
+            <span class="n">fd_steps</span><span class="o">=</span><span class="n">fd_steps</span><span class="p">,</span> <span class="n">fd_scheme</span><span class="o">=</span><span class="n">fd_scheme</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

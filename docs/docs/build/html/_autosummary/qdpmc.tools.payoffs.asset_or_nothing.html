@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.tools.payoffs.asset_or_nothing &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qdpmc.tools.payoffs.Payoff" href="qdpmc.tools.payoffs.Payoff.html" />
+    <link rel="prev" title="qdpmc.tools.payoffs.cash_or_nothing" href="qdpmc.tools.payoffs.cash_or_nothing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#payoffs">Payoffs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API References</a> &raquo;</li>
+        
+      <li>qdpmc.tools.payoffs.asset_or_nothing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_autosummary/qdpmc.tools.payoffs.asset_or_nothing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qdpmc-tools-payoffs-asset-or-nothing">
+<h1>qdpmc.tools.payoffs.asset_or_nothing<a class="headerlink" href="#qdpmc-tools-payoffs-asset-or-nothing" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="qdpmc.tools.payoffs.asset_or_nothing">
+<span class="sig-prename descclassname"><span class="pre">qdpmc.tools.payoffs.</span></span><span class="sig-name descname"><span class="pre">asset_or_nothing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">underlying_price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strike</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/tools/payoffs.html#asset_or_nothing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.tools.payoffs.asset_or_nothing" title="Permalink to this definition">¶</a></dt>
+<dd><p>An asset-or-nothing payoff function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>underlying_price</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – An array of price of the underlying asset.</p></li>
+<li><p><strong>strike</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The strike of the option.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> – The payoff array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qdpmc.tools.payoffs.Payoff.html" class="btn btn-neutral float-right" title="qdpmc.tools.payoffs.Payoff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qdpmc.tools.payoffs.cash_or_nothing.html" class="btn btn-neutral float-left" title="qdpmc.tools.payoffs.cash_or_nothing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

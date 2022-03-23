@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Usage &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API References" href="api.html" />
+    <link rel="prev" title="Contents" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>This page contains <a class="reference internal" href="#simple-examples"><span class="std std-ref">simple examples</span></a> of
+pricing path-dependent options. For detailed documentation, refer to
+<a class="reference internal" href="api.html"><span class="doc">API References</span></a>.</p>
+<div class="section" id="installation">
+<span id="id1"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To obtain the latest version of <code class="docutils literal notranslate"><span class="pre">qdpmc</span></code>, use pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install qdpmc
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-started">
+<span id="simple-examples"></span><h2>Get started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="import-modules">
+<h3>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">qdpmc</span> <span class="k">as</span> <span class="nn">qm</span>
+
+<span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-up-parameters">
+<h3>Set up parameters<a class="headerlink" href="#set-up-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Before pricing products, specify parameters of Monte Carlo
+simulation and market dynamics.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Simulation parameters</span>
+<span class="gp">In [3]: </span><span class="n">mc</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">MonteCarlo</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">125</span><span class="p">,</span> <span class="n">num_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="go"># Black-Scholes dynamics</span>
+<span class="gp">In [4]: </span><span class="n">bs</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">BlackScholes</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">day_counter</span><span class="o">=</span><span class="mi">252</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="single-barrier-options">
+<h3>Single-barrier options<a class="headerlink" href="#single-barrier-options" title="Permalink to this headline">¶</a></h3>
+<p>This example in the index page demonstrates the
+pricing of an up-and-out call option using <code class="docutils literal notranslate"><span class="pre">qdpmc</span></code>.
+To price an up-and-out put option, modify the associated codes:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># Specify an up-and-out call option</span>
+<span class="gp">In [5]: </span><span class="n">up_out_call</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">UpOut</span><span class="p">(</span>
+<span class="gp">   ...: </span>    <span class="n">spot</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">   ...: </span>    <span class="n">barrier</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+<span class="gp">   ...: </span>    <span class="n">rebate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">   ...: </span>    <span class="n">ob_days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">252</span><span class="p">),</span>
+<span class="gp">   ...: </span>    <span class="n">payoff</span><span class="o">=</span><span class="n">qm</span><span class="o">.</span><span class="n">Payoff</span><span class="p">(</span>
+<span class="gp">   ...: </span>        <span class="n">qm</span><span class="o">.</span><span class="n">plain_vanilla</span><span class="p">,</span>
+<span class="gp">   ...: </span>        <span class="n">strike</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">   ...: </span>        <span class="n">option_type</span><span class="o">=</span><span class="s2">&quot;call&quot;</span>
+<span class="gp">   ...: </span>    <span class="p">)</span>
+<span class="gp">   ...: </span><span class="p">)</span>
+<span class="gp">   ...: </span>
+
+<span class="go"># PV and Greek letters</span>
+<span class="gp">In [6]: </span><span class="n">up_out_call</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">)</span>
+<span class="gh">Out[6]: </span><span class="go">6.3471380720785975</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="calculate-greeks">
+<h3>Calculate Greeks<a class="headerlink" href="#calculate-greeks" title="Permalink to this headline">¶</a></h3>
+<p>Request Greeks by specifying <code class="docutils literal notranslate"><span class="pre">request_greeks</span></code> in <code class="docutils literal notranslate"><span class="pre">calc_value</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">up_out_call</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">,</span> <span class="n">request_greeks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gh">Out[7]: </span><span class="go"></span>
+<span class="go">{&#39;PV&#39;: 6.409739751774947,</span>
+<span class="go"> &#39;Delta&#39;: 0.17811495774065103,</span>
+<span class="go"> &#39;Gamma&#39;: -0.02300883633852304,</span>
+<span class="go"> &#39;Rho&#39;: 8.170293291496643,</span>
+<span class="go"> &#39;Vega&#39;: -21.910890581652186,</span>
+<span class="go"> &#39;Theta&#39;: 4.592258385630924e-05}</span>
+</pre></div>
+</div>
+<p>By default, the method uses central differences for Delta, Rho, and Vega.
+Change the steps and schemes by specifying the associated parameters.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">up_out_call</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">,</span> <span class="n">request_greeks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">   ...: </span>                       <span class="n">fd_steps</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ds&#39;</span><span class="p">:</span><span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;dr&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;dv&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span>
+<span class="gp">   ...: </span>                       <span class="n">fd_scheme</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ds&#39;</span><span class="p">:</span> <span class="s1">&#39;central&#39;</span><span class="p">,</span> <span class="s1">&#39;dr&#39;</span><span class="p">:</span> <span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+<span class="gp">   ...: </span>                                  <span class="s1">&#39;dv&#39;</span><span class="p">:</span> <span class="s1">&#39;backward&#39;</span><span class="p">})</span>
+<span class="gp">   ...: </span>
+<span class="gh">Out[8]: </span><span class="go"></span>
+<span class="go">{&#39;PV&#39;: 6.429185971996081,</span>
+<span class="go"> &#39;Delta&#39;: 0.1804305669670208,</span>
+<span class="go"> &#39;Gamma&#39;: -0.022440180260058108,</span>
+<span class="go"> &#39;Rho&#39;: 15.745833276430355,</span>
+<span class="go"> &#39;Vega&#39;: -20.947375000853032,</span>
+<span class="go"> &#39;Theta&#39;: -1.1078892117743493e-05}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="re-use-random-numbers">
+<h3>Re-use random numbers<a class="headerlink" href="#re-use-random-numbers" title="Permalink to this headline">¶</a></h3>
+<p>By default, each time <code class="docutils literal notranslate"><span class="pre">calc_value</span></code> is run a different set of random
+numbers is used (a different entropy is used to initialize
+the random number generator.
+Check out <a class="reference external" href="https://numpy.org/doc/stable/reference/random/bit_generators/generated/numpy.random.SeedSequence.html">this page</a>
+for details about <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> random number generator).
+To reuse the same set of random numbers, run the following codes:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">e</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">most_recent_entropy</span>
+
+<span class="gp">In [10]: </span><span class="n">up_out_call</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">6.42918597199609</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time-varying-barrier-level">
+<h3>Time-varying barrier level<a class="headerlink" href="#time-varying-barrier-level" title="Permalink to this headline">¶</a></h3>
+<p>If a scalar is passed to <code class="docutils literal notranslate"><span class="pre">barrier</span></code>, the barrier is then assumed to
+be time-invariant. Pass an array to <code class="docutils literal notranslate"><span class="pre">barrier</span></code> to specify a time-varying
+barrier level. However, note that this array should match the length of
+<code class="docutils literal notranslate"><span class="pre">ob_days</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">time_varying_barrier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">252</span><span class="p">)</span>
+
+<span class="gp">In [12]: </span><span class="n">time_varying_barrier_option</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">UpOut</span><span class="p">(</span>
+<span class="gp">   ....: </span>    <span class="n">spot</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">barrier</span><span class="o">=</span><span class="n">time_varying_barrier</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">rebate</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">ob_days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">252</span><span class="p">),</span>
+<span class="gp">   ....: </span>    <span class="n">payoff</span><span class="o">=</span><span class="n">qm</span><span class="o">.</span><span class="n">Payoff</span><span class="p">(</span>
+<span class="gp">   ....: </span>        <span class="n">qm</span><span class="o">.</span><span class="n">plain_vanilla</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="n">strike</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="n">option_type</span><span class="o">=</span><span class="s2">&quot;call&quot;</span>
+<span class="gp">   ....: </span>    <span class="p">)</span>
+<span class="gp">   ....: </span><span class="p">)</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [13]: </span><span class="n">time_varying_barrier_option</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">)</span>
+<span class="gh">Out[13]: </span><span class="go">1.9540287037847537</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-payoff-function">
+<h3>Define payoff function<a class="headerlink" href="#define-payoff-function" title="Permalink to this headline">¶</a></h3>
+<p>To customize a payoff function, define a <em>Payoff</em>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="k">def</span> <span class="nf">dsf_payoff</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="n">call</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">plain_vanilla</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="s1">&#39;call&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="n">put</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">plain_vanilla</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="s1">&#39;put&#39;</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">call</span> <span class="o">+</span> <span class="n">put</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [15]: </span><span class="n">dsf</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">DoubleOut</span><span class="p">(</span>
+<span class="gp">   ....: </span>    <span class="n">spot</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">barrier_up</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">barrier_down</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">ob_days_up</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">252</span><span class="p">),</span>
+<span class="gp">   ....: </span>    <span class="n">ob_days_down</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+<span class="gp">   ....: </span>    <span class="n">payoff</span><span class="o">=</span><span class="n">qm</span><span class="o">.</span><span class="n">Payoff</span><span class="p">(</span>
+<span class="gp">   ....: </span>        <span class="n">func</span><span class="o">=</span><span class="n">dsf_payoff</span><span class="p">,</span>
+<span class="gp">   ....: </span>        <span class="n">k1</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">k2</span><span class="o">=</span><span class="mi">110</span>
+<span class="gp">   ....: </span>    <span class="p">),</span>
+<span class="gp">   ....: </span>    <span class="n">rebate_up</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">   ....: </span>    <span class="n">rebate_down</span><span class="o">=</span><span class="mi">2</span>
+<span class="gp">   ....: </span><span class="p">)</span>
+<span class="gp">   ....: </span>
+
+<span class="gp">In [16]: </span><span class="n">dsf</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">)</span>
+<span class="gh">Out[16]: </span><span class="go">3.1896042386631818</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-right" title="API References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

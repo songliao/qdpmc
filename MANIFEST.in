@@ -1,0 +1,3 @@
+graft LICENSES
+
+include LICENSE.txt

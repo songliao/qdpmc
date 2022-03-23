@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+.idea
+
+# egg infos
+*.egg-info
+
+# virtulenvs
+venv
+.venv
+
+dist
+
+# py caches
+__pycache__

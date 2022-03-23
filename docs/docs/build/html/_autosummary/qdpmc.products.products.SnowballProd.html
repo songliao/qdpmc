@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.products.products.SnowballProd &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qdpmc.model.market_process.BlackScholes" href="qdpmc.model.market_process.BlackScholes.html" />
+    <link rel="prev" title="qdpmc.tools.payoffs.Payoff" href="qdpmc.tools.payoffs.Payoff.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#products">Products</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API References</a> &raquo;</li>
+        
+      <li>qdpmc.products.products.SnowballProd</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_autosummary/qdpmc.products.products.SnowballProd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qdpmc-products-products-snowballprod">
+<h1>qdpmc.products.products.SnowballProd<a class="headerlink" href="#qdpmc-products-products-snowballprod" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qdpmc.products.products.SnowballProd">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qdpmc.products.products.</span></span><span class="sig-name descname"><span class="pre">SnowballProd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_barriers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_ob_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ki_barriers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ki_ob_dates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ki_payoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ko_coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maturity_coupon_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calendar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar" title="qdpmc.dateutil.date.Calendar"><span class="pre">qdpmc.dateutil.date.Calendar</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/products/products.html#SnowballProd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.products.products.SnowballProd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A snowball structure is an autocallable structured product with snowballing
+coupon payments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – A datetime.date object indicating the starting day of the
+structured product. It must be a trading as determined by <em>calendar</em></p></li>
+<li><p><strong>initial_price</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The price of the underlying asset on <em>start_date</em>.</p></li>
+<li><p><strong>ko_barriers</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a> or <a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.21)"><span>array_like</span></a>) – The knock-out level of the structure. It can either be
+a scalar or be an array of numbers. If a scalar is passed in, it will be
+treated as the time-invariant barrier level. If an array is passed in,
+it must match the length of <em>ko_ob_dates</em>.</p></li>
+<li><p><strong>ko_ob_dates</strong> (<a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.21)"><span>array_like</span></a>) – The observation dates for knock-out. It must be an array
+of datetime.date objects. All of these dates must be trading dates as
+determined by <em>calendar</em>.</p></li>
+<li><p><strong>ki_barriers</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a> or <a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.21)"><span>array_like</span></a>) – Similar to <em>ko_barriers</em>. It controls the level of knock-in barrier.</p></li>
+<li><p><strong>ki_ob_dates</strong> (<a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.21)"><span>array_like</span></a> or <code class="docutils literal notranslate"><span class="pre">&quot;daily&quot;</span></code>) – similar to <em>ko_ob_dates</em>. <em>“daily”</em> indicates daily observation for the
+knock-in event.</p></li>
+<li><p><strong>ki_payoff</strong> (<a class="reference internal" href="qdpmc.tools.payoffs.Payoff.html#qdpmc.tools.payoffs.Payoff" title="qdpmc.tools.payoffs.Payoff"><code class="xref py py-class docutils literal notranslate"><span class="pre">qdpmc.tools.payoffs.Payoff</span></code></a>) – Controls payoff which applies when, during the life of the contract,
+a knock-in event occurs while a knock-out does not.</p></li>
+<li><p><strong>ko_coupon_rate</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – the coupon rate that applies in the event of a knock-out.</p></li>
+<li><p><strong>maturity_coupon_rate</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – this rate applies when there is neither knock-out nor knock-in during
+the entire life of the contract.</p></li>
+<li><p><strong>calendar</strong> (<a class="reference internal" href="qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar" title="qdpmc.dateutil.date.Calendar"><code class="xref py py-class docutils literal notranslate"><span class="pre">qdpmc.dateutil.date.Calendar</span></code></a>) – <em>Calendar</em> object. If <em>None</em> a default calendar will be used.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The day count convention for coupon payment is <em>ACT/365</em>.
+The maturity is <code class="docutils literal notranslate"><span class="pre">ko_ob_dates[-1]</span></code>.
+Notional principal is equal to <code class="docutils literal notranslate"><span class="pre">initial_price</span></code>.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="go"># instantiate a Calendar object so we can use it to generate periodic</span>
+<span class="go"># datetime.date array</span>
+<span class="gp">In [2]: </span><span class="n">calendar</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">Calendar</span><span class="p">()</span>
+
+<span class="go"># this should be a trading day</span>
+<span class="gp">In [3]: </span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
+
+<span class="gp">In [4]: </span><span class="k">assert</span> <span class="n">calendar</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+
+<span class="go"># monthly trading dates excluding the start</span>
+<span class="gp">In [5]: </span><span class="n">monthly_dates</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">periodic</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="s2">&quot;1m&quot;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="go"># a short put</span>
+<span class="gp">In [6]: </span><span class="n">short_put</span> <span class="o">=</span> <span class="o">-</span> <span class="n">qm</span><span class="o">.</span><span class="n">Payoff</span><span class="p">(</span><span class="n">qm</span><span class="o">.</span><span class="n">plain_vanilla</span><span class="p">,</span> <span class="n">option_type</span><span class="o">=</span><span class="s2">&quot;put&quot;</span><span class="p">,</span>
+<span class="gp">   ...: </span>                        <span class="n">strike</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">   ...: </span>
+
+<span class="go"># instantiate the structured product</span>
+<span class="gp">In [7]: </span><span class="n">option</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">SnowballProd</span><span class="p">(</span>
+<span class="gp">   ...: </span>    <span class="n">start_date</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">initial_price</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ko_barriers</span><span class="o">=</span><span class="mi">105</span><span class="p">,</span>
+<span class="gp">   ...: </span>    <span class="n">ko_ob_dates</span><span class="o">=</span><span class="n">monthly_dates</span><span class="p">,</span> <span class="n">ki_barriers</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">ki_ob_dates</span><span class="o">=</span><span class="s2">&quot;daily&quot;</span><span class="p">,</span>
+<span class="gp">   ...: </span>    <span class="n">ki_payoff</span><span class="o">=</span><span class="n">short_put</span><span class="p">,</span> <span class="n">ko_coupon_rate</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+<span class="gp">   ...: </span>    <span class="n">maturity_coupon_rate</span><span class="o">=</span><span class="mf">0.15</span>
+<span class="gp">   ...: </span><span class="p">)</span>
+<span class="gp">   ...: </span>
+
+<span class="gp">In [8]: </span><span class="n">mc</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">MonteCarlo</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="gp">In [9]: </span><span class="n">bs</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">BlackScholes</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">252</span><span class="p">)</span>
+
+<span class="go"># value the contract given day and spot price</span>
+<span class="gp">In [10]: </span><span class="n">option</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">102</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">mc</span><span class="p">,</span> <span class="n">bs</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">2.9738285487478087</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(start_date, initial_price, …[, …])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.products.products.SnowballProd.backtest" title="qdpmc.products.products.SnowballProd.backtest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">backtest</span></code></a>(daily_underlying_asset_prices)</p></td>
+<td><p>backtest the performance of the product in the option holders’ view with given underlying asset price series, find out the actual holding period and its final payoff</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.products.products.SnowballProd.find_coup_rate" title="qdpmc.products.products.SnowballProd.find_coup_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_coup_rate</span></code></a>(engine, process, target_pv[, …])</p></td>
+<td><p>Give a target PV, find the coupon rate.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.products.products.SnowballProd.to_structure" title="qdpmc.products.products.SnowballProd.to_structure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_structure</span></code></a>(valuation_date, spot, ki_flag)</p></td>
+<td><p>Return the structure used to value the product.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.products.products.SnowballProd.value" title="qdpmc.products.products.SnowballProd.value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code></a>(valuation_date, spot, ki_flag, *args, …)</p></td>
+<td><p>Value the product given a date and a spot price.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.products.products.SnowballProd.backtest">
+<span class="sig-name descname"><span class="pre">backtest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daily_underlying_asset_prices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/products/products.html#SnowballProd.backtest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.products.products.SnowballProd.backtest" title="Permalink to this definition">¶</a></dt>
+<dd><p>backtest the performance of the product in the option holders’ view
+with given underlying asset price series, find out the actual holding period and its final payoff</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>daily_underlying_asset_prices</strong> (<a class="reference external" href="https://numpy.org/doc/stable/glossary.html#term-array_like" title="(in NumPy v1.21)"><span>array_like</span></a>) – the simulated or historical daily underlying asset price series for performance backtest, the length of the
+price series must be greater than the option’s life</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>end_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – the actual end date of the trade, could possibly be earlier than the maturity date</p></li>
+<li><p><strong>payout</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">double</span></code>) – the actual payout of the product to the option holder</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.products.products.SnowballProd.find_coup_rate">
+<span class="sig-name descname"><span class="pre">find_coup_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">process</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_pv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entropy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caller</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/products/products.html#SnowballProd.find_coup_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.products.products.SnowballProd.find_coup_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give a target PV, find the coupon rate.</p>
+<p><em>entropy</em> and <em>caller</em> are forwarded to
+<a class="reference internal" href="qdpmc.engine.monte_carlo.MonteCarlo.html#qdpmc.engine.monte_carlo.MonteCarlo.calc" title="qdpmc.engine.monte_carlo.MonteCarlo.calc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">qdpmc.engine.monte_carlo.MonteCarlo.calc()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.products.products.SnowballProd.to_structure">
+<span class="sig-name descname"><span class="pre">to_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valuation_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ki_flag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/products/products.html#SnowballProd.to_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.products.products.SnowballProd.to_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the structure used to value the product.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.products.products.SnowballProd.value">
+<span class="sig-name descname"><span class="pre">value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valuation_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ki_flag</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/products/products.html#SnowballProd.value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.products.products.SnowballProd.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Value the product given a date and a spot price. <em>args</em> and <em>kwargs</em>
+are positional and keyword arguments forwarded to
+<a class="reference internal" href="qdpmc.engine.monte_carlo.MonteCarlo.html#qdpmc.engine.monte_carlo.MonteCarlo.calc" title="qdpmc.engine.monte_carlo.MonteCarlo.calc"><code class="xref py py-meth docutils literal notranslate"><span class="pre">qdpmc.engine.monte_carlo.MonteCarlo.calc()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>valuation_date</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.date" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>) – the valuate date. It must be a trading day.</p></li>
+<li><p><strong>spot</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – the spot price.</p></li>
+<li><p><strong>ki_flag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.9)"><span class="xref std std-ref">bool</span></a>) – whether to mark the product as knock-in. If <em>True</em>, the
+structure is an up-and-out option.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qdpmc.model.market_process.BlackScholes.html" class="btn btn-neutral float-right" title="qdpmc.model.market_process.BlackScholes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qdpmc.tools.payoffs.Payoff.html" class="btn btn-neutral float-left" title="qdpmc.tools.payoffs.Payoff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

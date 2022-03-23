@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.model.market_process.Heston &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="qdpmc.engine.monte_carlo.MonteCarlo" href="qdpmc.engine.monte_carlo.MonteCarlo.html" />
+    <link rel="prev" title="qdpmc.model.market_process.BlackScholes" href="qdpmc.model.market_process.BlackScholes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API References</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#market-models">Market Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API References</a> &raquo;</li>
+        
+      <li>qdpmc.model.market_process.Heston</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_autosummary/qdpmc.model.market_process.Heston.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qdpmc-model-market-process-heston">
+<h1>qdpmc.model.market_process.Heston<a class="headerlink" href="#qdpmc-model-market-process-heston" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qdpmc.model.market_process.Heston">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">qdpmc.model.market_process.</span></span><span class="sig-name descname"><span class="pre">Heston</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_v0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day_counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">252</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/model/market_process.html#Heston"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.model.market_process.Heston" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A stochastic-volatility model due to Heston (1993).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathrm{d}S_t&amp;=(r - q)S_t\mathrm{d}t + \sqrt{v_t} S_t \mathrm{d}W_t \\
+\mathrm{d}v_t&amp;=\kappa(\theta-v_t)\mathrm{d}t +
+    \xi \sqrt{v_t} \mathrm{d}Z_t
+\end{align*}\end{split}\]</div>
+<p>When passing a Heston process into the Monte Carlo engine, products will be valued
+by discounting the payoff at the risk-free (parameter <em>r</em>) rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The risk-free rate. It is used as the continuous discount rate.</p></li>
+<li><p><strong>q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The continuous yield of the underlying asset. Notice that <em>(r-q)</em> is the
+drift of the price of the underlying asset under a risk-neutral measure.</p></li>
+<li><p><strong>rho</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The correlation between the two standard Brownian motions. This must be
+greater than -1 and less than 1.</p></li>
+<li><p><strong>theta</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The long-term mean of <em>v</em>.</p></li>
+<li><p><strong>kappa</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The mean-reverting intensity. The larger it is, the quicker <em>v</em> reverts to
+<em>theta</em>.</p></li>
+<li><p><strong>xi</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The volatility of <em>v</em>.</p></li>
+<li><p><strong>default_v0</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The default starting value of the variance.</p></li>
+<li><p><strong>day_counter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of days per year. This affects the discount factor.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(r, q, rho, theta, kappa, xi, default_v0)</p></td>
+<td><p>A stochastic-volatility model due to Heston (1993).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#qdpmc.model.market_process.Heston.generate_path" title="qdpmc.model.market_process.Heston.generate_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_path</span></code></a>(t[, v0, gamma1, gamma2, …])</p></td>
+<td><p>Generate a set of projections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qdpmc.model.market_process.Heston.generate_path_given_uz" title="qdpmc.model.market_process.Heston.generate_path_given_uz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_path_given_uz</span></code></a>(t, u, z[, v0, …])</p></td>
+<td><p>Project variance and log return given random numbers.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordinator</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.model.market_process.Heston.generate_path">
+<span class="sig-name descname"><span class="pre">generate_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_points_in_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/model/market_process.html#Heston.generate_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.model.market_process.Heston.generate_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a set of projections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The time index through which the path are generated. Note that <em>t=1</em>
+represents a 1-year horizon. Notice that <em>t * self.day_counter</em> should be an
+integer.</p></li>
+<li><p><strong>v0</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – The initial value of <em>v</em>. If is None, it is set to <em>default_v0</em>. Default is
+None.</p></li>
+<li><p><strong>gamma1</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – Controls the finite-difference scheme when simulating the log return. Central
+scheme corresponds to <em>gamma1=gamma2=0.5</em>.</p></li>
+<li><p><strong>gamma2</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#arrays-scalars" title="(in NumPy v1.21)"><span class="xref std std-ref">scalar</span></a>) – Controls the finite-difference scheme when simulating the log return. Central
+scheme corresponds to <em>gamma1=gamma2=0.5</em>.</p></li>
+<li><p><strong>batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>) – How many paths to generate at a time.</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>) – The random seed. If None, it will be chosen randomly. Default is None.</p></li>
+<li><p><strong>grid_points_in_time</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.9)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>) – Number of grid points in time. If None, daily simulation is assumed. Default
+is None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>v</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – Projections of variance.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – Projections of log return.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qdpmc.model.market_process.Heston.generate_path_given_uz">
+<span class="sig-name descname"><span class="pre">generate_path_given_uz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_points_in_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qdpmc/model/market_process.html#Heston.generate_path_given_uz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qdpmc.model.market_process.Heston.generate_path_given_uz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project variance and log return given random numbers.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="qdpmc.engine.monte_carlo.MonteCarlo.html" class="btn btn-neutral float-right" title="qdpmc.engine.monte_carlo.MonteCarlo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="qdpmc.model.market_process.BlackScholes.html" class="btn btn-neutral float-left" title="qdpmc.model.market_process.BlackScholes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

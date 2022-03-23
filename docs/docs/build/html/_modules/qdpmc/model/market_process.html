@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.model.market_process &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>qdpmc.model.market_process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qdpmc.model.market_process</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This modules provides an API for specification of market dynamics.</span>
+<span class="sd">Currently, supported market models are</span>
+
+<span class="sd">* Black-Scholes market model</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qdpmc.structures.base</span> <span class="kn">import</span> <span class="n">ProcessCoordinator</span><span class="p">,</span> <span class="n">OptionABC</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">float64</span>
+<span class="kn">import</span> <span class="nn">numba</span> <span class="k">as</span> <span class="nn">nb</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BlackScholes&#39;</span><span class="p">,</span> <span class="s1">&#39;Heston&#39;</span><span class="p">]</span>
+
+<span class="n">_cache_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S plus&#39;</span><span class="p">,</span> <span class="s1">&#39;S minus&#39;</span><span class="p">,</span> <span class="s1">&#39;V plus&#39;</span><span class="p">,</span> <span class="s1">&#39;V minus&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;R plus&#39;</span><span class="p">,</span> <span class="s1">&#39;R minus&#39;</span><span class="p">,</span> <span class="s1">&#39;DF plus&#39;</span><span class="p">,</span> <span class="s1">&#39;DF minus&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;DF next day&#39;</span><span class="p">,</span> <span class="s1">&#39;Paths next day&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_mk_dict</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="BlackScholes"><a class="viewcode-back" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html#qdpmc.model.market_process.BlackScholes">[docs]</a><span class="k">class</span> <span class="nc">BlackScholes</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A Black-Scholes process. A Black-Scholes market has two securities: a</span>
+<span class="sd">    risky asset and a risk-free bond.</span>
+
+<span class="sd">    Dynamics of the asset price is driven by a geometric Brownian motion:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\mathrm{d}S_t=r S_t\\mathrm{d}t + \\sigma S_t \\mathrm{d}W_t</span>
+
+<span class="sd">    and the log-return follows</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\mathrm{d}\\left(\\mathrm{log}{S_t}\\right)=</span>
+<span class="sd">        (r-q-\\frac{\\sigma^2}{2})\\mathrm{d}t+\\sigma\\mathrm{d}W_t</span>
+
+<span class="sd">    where the drift (under the risk-neutral measure) is the risk-free rate.</span>
+
+<span class="sd">    Parameters regarding market dynamics are set here before implementing</span>
+<span class="sd">    Monte Carlo simulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    r : scalar</span>
+<span class="sd">        The instantaenous risk-free rate.</span>
+<span class="sd">    q : scalar</span>
+<span class="sd">        The continuous yield.</span>
+<span class="sd">    v : scalar</span>
+<span class="sd">        The diffusion parameter.</span>
+<span class="sd">    day_counter : int</span>
+<span class="sd">        An integer that controls the numder of trading days in a year. Default is 252.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">day_counter</span><span class="o">=</span><span class="mi">252</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">/</span> <span class="n">day_counter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">q</span> <span class="o">/</span> <span class="n">day_counter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="p">(</span><span class="n">day_counter</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day_counter</span> <span class="o">=</span> <span class="n">day_counter</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_drift</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_diffusion</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_project_dd</span><span class="p">(</span><span class="n">drift</span><span class="p">,</span> <span class="n">diffusion</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+
+        <span class="n">exp_ds</span> <span class="o">=</span> <span class="n">drift</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">diffusion</span><span class="p">)</span>
+        <span class="n">log_paths</span> <span class="o">=</span> <span class="n">exp_ds</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">log_paths</span>
+
+    <span class="k">def</span> <span class="nf">_logs_drift_diffusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the drift and diffusion of the logarithm of stock price.</span>
+
+<span class="sd">        This function only returns array of drifts and diffusions. Along with</span>
+<span class="sd">        which a random number generator these can generate simulated realizations</span>
+<span class="sd">        of paths of the asset price.&quot;&quot;&quot;</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+        <span class="n">dt</span><span class="p">[</span><span class="n">dt</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">drift</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">diffusion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">drift</span><span class="p">,</span> <span class="n">diffusion</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">coordinator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_BSCoordinator</span></div>
+
+
+<span class="k">class</span> <span class="nc">_BSCoordinator</span><span class="p">(</span><span class="n">ProcessCoordinator</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="n">OptionABC</span><span class="p">,</span> <span class="n">bs</span><span class="p">:</span> <span class="n">BlackScholes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">option</span> <span class="o">=</span> <span class="n">option</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">bs</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">sim_t_array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">bs</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drift</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">diffusion</span> <span class="o">=</span> <span class="n">bs</span><span class="o">.</span><span class="n">_logs_drift_diffusion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_points_per_path</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_CACHE</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">generate_eps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_points_per_path</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">paths_given_eps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">_project_dd</span><span class="p">(</span><span class="n">drift</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">drift</span><span class="p">,</span> <span class="n">diffusion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">diffusion</span><span class="p">,</span>
+                                   <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+
+        <span class="n">_key_inputs</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dr</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dv</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_CACHE</span><span class="p">[</span><span class="n">_key_inputs</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">drift</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">drift</span>
+            <span class="n">diffusion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diffusion</span>
+            <span class="n">day_counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">day_counter</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span>
+            <span class="n">r</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">v</span>
+
+            <span class="c1"># the following needs to be cached</span>
+
+            <span class="n">s_shift_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">ds</span><span class="p">)</span>
+            <span class="n">s_shift_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">ds</span><span class="p">)</span>
+
+            <span class="n">r_shift</span> <span class="o">=</span> <span class="n">dr</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">day_counter</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="n">df_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">dr</span> <span class="o">/</span> <span class="n">day_counter</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">df_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">dr</span> <span class="o">/</span> <span class="n">day_counter</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+
+            <span class="c1"># This is to calculate new paths w/r/t shift in volatility</span>
+            <span class="n">_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">dv</span> <span class="o">*</span> <span class="n">dv</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">day_counter</span>
+            <span class="n">_inter</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">dv</span> <span class="o">/</span> <span class="p">(</span><span class="n">day_counter</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+            <span class="n">_v_shift_diffusion</span> <span class="o">=</span> <span class="n">dv</span> <span class="o">/</span> <span class="p">(</span><span class="n">day_counter</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+            <span class="n">v_drift_plus</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">_sq</span> <span class="o">+</span> <span class="n">_inter</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">drift</span>
+            <span class="n">v_drift_minus</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">_sq</span> <span class="o">-</span> <span class="n">_inter</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">drift</span>
+            <span class="n">v_diffusion_plus</span> <span class="o">=</span> <span class="n">diffusion</span> <span class="o">+</span> <span class="n">_v_shift_diffusion</span>
+            <span class="n">v_diffusion_minus</span> <span class="o">=</span> <span class="n">diffusion</span> <span class="o">-</span> <span class="n">_v_shift_diffusion</span>
+
+            <span class="n">dt_next_day</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">dt_next_day</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">dt_next_day</span><span class="p">[</span><span class="n">dt_next_day</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">df_next_day</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">drift_next_day</span><span class="p">,</span> <span class="n">diffusion_next_day</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">_logs_drift_diffusion</span><span class="p">(</span><span class="n">dt_next_day</span><span class="p">)</span>
+
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_mk_dict</span><span class="p">(</span>
+                <span class="n">keys</span><span class="o">=</span><span class="n">_cache_keys</span><span class="p">,</span>
+                <span class="n">values</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">s_shift_plus</span><span class="p">,</span> <span class="n">s_shift_minus</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">v_drift_plus</span><span class="p">,</span> <span class="n">v_diffusion_plus</span><span class="p">),</span>
+                    <span class="p">(</span><span class="n">v_drift_minus</span><span class="p">,</span> <span class="n">v_diffusion_minus</span><span class="p">),</span>
+                    <span class="n">r_shift</span><span class="p">,</span> <span class="o">-</span><span class="n">r_shift</span><span class="p">,</span> <span class="n">df_plus</span><span class="p">,</span> <span class="n">df_minus</span><span class="p">,</span>
+                    <span class="n">df_next_day</span><span class="p">,</span>
+                    <span class="p">(</span><span class="n">drift_next_day</span><span class="p">,</span> <span class="n">diffusion_next_day</span><span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_CACHE</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">_key_inputs</span><span class="p">:</span> <span class="n">val</span><span class="p">})</span>
+
+        <span class="n">shifted_paths</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;S plus&#39;</span><span class="p">:</span> <span class="n">paths</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;S plus&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;S minus&#39;</span><span class="p">:</span> <span class="n">paths</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;S minus&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;R plus&#39;</span><span class="p">:</span> <span class="n">paths</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;R plus&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;R minus&#39;</span><span class="p">:</span> <span class="n">paths</span> <span class="o">+</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;R minus&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;V plus&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">_project_dd</span><span class="p">(</span><span class="n">drift</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;V plus&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                                          <span class="n">diffusion</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;V plus&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">),</span>
+            <span class="s1">&#39;V minus&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">_project_dd</span><span class="p">(</span><span class="n">drift</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;V minus&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                                           <span class="n">diffusion</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;V minus&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>
+                                           <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">),</span>
+            <span class="s1">&#39;DF plus&#39;</span><span class="p">:</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;DF plus&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;DF minus&#39;</span><span class="p">:</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;DF minus&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;DF next day&#39;</span><span class="p">:</span> <span class="n">val</span><span class="p">[</span><span class="s1">&#39;DF next day&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;Paths next day&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="o">.</span><span class="n">_project_dd</span><span class="p">(</span>
+                <span class="n">drift</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;Paths next day&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">diffusion</span><span class="o">=</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;Paths next day&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">shifted_paths</span>
+
+
+<span class="c1"># ===============================Heston Model============================</span>
+<span class="nd">@nb</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">float64</span><span class="p">(</span><span class="n">float64</span><span class="p">,</span> <span class="n">float64</span><span class="p">,</span>
+             <span class="n">float64</span><span class="p">,</span> <span class="n">float64</span><span class="p">)]</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">_qe_one_path_one_step</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">u1</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">z1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">psi</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">psiinv</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">psi</span>
+        <span class="n">b2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">psiinv</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">psiinv</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">psiinv</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b2</span><span class="p">)</span> <span class="o">+</span> <span class="n">z1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">psi</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">psi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u1</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">u1</span><span class="p">))</span> <span class="o">/</span> <span class="n">beta</span>
+
+
+<span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_get_kvkr</span><span class="p">(</span><span class="n">kappa</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">volvol</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">k0</span> <span class="o">=</span> <span class="o">-</span><span class="n">theta</span> <span class="o">*</span> <span class="n">k1</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">k1</span><span class="p">)</span> <span class="o">/</span> <span class="n">kappa</span> <span class="o">*</span> <span class="n">volvol</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k1</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">volvol</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">kappa</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">k1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">kv</span> <span class="o">=</span> <span class="p">[</span><span class="n">k0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">k3</span><span class="p">]</span>
+
+    <span class="k">del</span> <span class="n">k0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">k3</span>
+    <span class="n">k0</span> <span class="o">=</span> <span class="o">-</span><span class="n">rho</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">/</span> <span class="n">volvol</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">gamma1</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">/</span> <span class="n">volvol</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> \
+        <span class="n">rho</span> <span class="o">/</span> <span class="n">volvol</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">gamma2</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">/</span> <span class="n">volvol</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="n">rho</span> <span class="o">/</span> <span class="n">volvol</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">gamma1</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">rho</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">gamma2</span> <span class="o">/</span> <span class="n">gamma1</span> <span class="o">*</span> <span class="n">k3</span>
+    <span class="n">kr</span> <span class="o">=</span> <span class="p">[</span><span class="n">k0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">k3</span><span class="p">,</span> <span class="n">k4</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">kv</span><span class="p">,</span> <span class="n">kr</span>
+
+
+<span class="n">_spec</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">UniTuple(float64[:, :], 2)(</span>
+<span class="s1">    float64[:], float64[:], float64, float64,</span>
+<span class="s1">    float64, float64, float64[:, :],</span>
+<span class="s1">    float64[:, :], float64[:, :], int32, int32</span>
+<span class="s1">)</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">]</span>
+
+
+<span class="nd">@nb</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">_spec</span><span class="p">,</span> <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">error_model</span><span class="o">=</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_jitable_heston</span><span class="p">(</span>
+        <span class="n">kv</span><span class="p">,</span> <span class="n">kr</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">z_v</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">):</span>
+    <span class="n">v0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">v0</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="p">))</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">last_v</span> <span class="o">=</span> <span class="n">v0</span>
+    <span class="n">last_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">v0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_points_in_time</span><span class="p">):</span>
+        <span class="n">k0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">k3</span> <span class="o">=</span> <span class="n">kv</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">+</span> <span class="n">last_v</span> <span class="o">*</span> <span class="n">k1</span> <span class="o">+</span> <span class="n">k0</span>
+        <span class="n">s2</span> <span class="o">=</span> <span class="n">last_v</span> <span class="o">*</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">s2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">_qe_one_path_one_step</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">u</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">m</span><span class="p">,</span> <span class="n">z_v</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+        <span class="n">k0r</span><span class="p">,</span> <span class="n">k1r</span><span class="p">,</span> <span class="n">k2r</span><span class="p">,</span> <span class="n">k3r</span><span class="p">,</span> <span class="n">k4r</span> <span class="o">=</span> <span class="n">kr</span>
+        <span class="n">rt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k3r</span> <span class="o">*</span> <span class="n">last_v</span> <span class="o">+</span> <span class="n">k4r</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">last_x</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">+</span> <span class="n">k0r</span> <span class="o">+</span> <span class="n">k1r</span> <span class="o">*</span> <span class="n">last_v</span> <span class="o">+</span> <span class="n">k2r</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> \
+            <span class="n">rt</span> <span class="o">*</span> <span class="n">z</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+        <span class="n">V</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="n">X</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">last_v</span><span class="p">,</span> <span class="n">last_x</span> <span class="o">=</span> <span class="n">v</span><span class="p">,</span> <span class="n">x</span>
+
+    <span class="k">assert</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">V</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">return</span> <span class="n">V</span><span class="p">,</span> <span class="n">X</span>
+
+
+<div class="viewcode-block" id="Heston"><a class="viewcode-back" href="../../../_autosummary/qdpmc.model.market_process.Heston.html#qdpmc.model.market_process.Heston">[docs]</a><span class="k">class</span> <span class="nc">Heston</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">default_v0</span><span class="p">,</span> <span class="n">day_counter</span><span class="o">=</span><span class="mi">252</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A stochastic-volatility model due to Heston (1993).</span>
+
+<span class="sd">        .. math::</span>
+<span class="sd">            \\begin{align*}</span>
+<span class="sd">            \\mathrm{d}S_t&amp;=(r - q)S_t\\mathrm{d}t + \\sqrt{v_t} S_t \\mathrm{d}W_t \\\\</span>
+<span class="sd">            \\mathrm{d}v_t&amp;=\\kappa(\\theta-v_t)\\mathrm{d}t +</span>
+<span class="sd">                \\xi \\sqrt{v_t} \\mathrm{d}Z_t</span>
+<span class="sd">            \\end{align*}</span>
+
+<span class="sd">        When passing a Heston process into the Monte Carlo engine, products will be valued</span>
+<span class="sd">        by discounting the payoff at the risk-free (parameter *r*) rate.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        r : scalar</span>
+<span class="sd">            The risk-free rate. It is used as the continuous discount rate.</span>
+<span class="sd">        q : scalar</span>
+<span class="sd">            The continuous yield of the underlying asset. Notice that *(r-q)* is the</span>
+<span class="sd">            drift of the price of the underlying asset under a risk-neutral measure.</span>
+<span class="sd">        rho : scalar</span>
+<span class="sd">            The correlation between the two standard Brownian motions. This must be</span>
+<span class="sd">            greater than -1 and less than 1.</span>
+<span class="sd">        theta : scalar</span>
+<span class="sd">            The long-term mean of *v*.</span>
+<span class="sd">        kappa : scalar</span>
+<span class="sd">            The mean-reverting intensity. The larger it is, the quicker *v* reverts to</span>
+<span class="sd">            *theta*.</span>
+<span class="sd">        xi : scalar</span>
+<span class="sd">            The volatility of *v*.</span>
+<span class="sd">        default_v0 : scalar</span>
+<span class="sd">            The default starting value of the variance.</span>
+<span class="sd">        day_counter : int</span>
+<span class="sd">            Number of days per year. This affects the discount factor.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">q</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kappa</span> <span class="o">=</span> <span class="n">kappa</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xi</span> <span class="o">=</span> <span class="n">xi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">volvol</span> <span class="o">=</span> <span class="n">xi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_v0</span> <span class="o">=</span> <span class="n">default_v0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">day_counter</span> <span class="o">=</span> <span class="n">day_counter</span>
+
+<div class="viewcode-block" id="Heston.generate_path"><a class="viewcode-back" href="../../../_autosummary/qdpmc.model.market_process.Heston.html#qdpmc.model.market_process.Heston.generate_path">[docs]</a>    <span class="k">def</span> <span class="nf">generate_path</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gamma1</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">gamma2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a set of projections.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t : scalar</span>
+<span class="sd">            The time index through which the path are generated. Note that *t=1*</span>
+<span class="sd">            represents a 1-year horizon. Notice that *t * self.day_counter* should be an</span>
+<span class="sd">            integer.</span>
+<span class="sd">        v0 : scalar</span>
+<span class="sd">            The initial value of *v*. If is None, it is set to *default_v0*. Default is</span>
+<span class="sd">            None.</span>
+<span class="sd">        gamma1, gamma2 : scalar</span>
+<span class="sd">            Controls the finite-difference scheme when simulating the log return. Central</span>
+<span class="sd">            scheme corresponds to *gamma1=gamma2=0.5*.</span>
+<span class="sd">        batch_size : int</span>
+<span class="sd">            How many paths to generate at a time.</span>
+<span class="sd">        seed : int</span>
+<span class="sd">            The random seed. If None, it will be chosen randomly. Default is None.</span>
+<span class="sd">        grid_points_in_time : int</span>
+<span class="sd">            Number of grid points in time. If None, daily simulation is assumed. Default</span>
+<span class="sd">            is None</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        v : ndarray</span>
+<span class="sd">            Projections of variance.</span>
+<span class="sd">        x : ndarray</span>
+<span class="sd">            Projections of log return.&quot;&quot;&quot;</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="p">))</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="p">))</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_path_given_uz</span><span class="p">(</span>
+            <span class="n">v0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="p">,</span> <span class="n">grid_points_in_time</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">v</span><span class="p">,</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="Heston.generate_path_given_uz"><a class="viewcode-back" href="../../../_autosummary/qdpmc.model.market_process.Heston.html#qdpmc.model.market_process.Heston.generate_path_given_uz">[docs]</a>    <span class="k">def</span> <span class="nf">generate_path_given_uz</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gamma1</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">gamma2</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">grid_points_in_time</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Project variance and log return given random numbers.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">v0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_v0</span>
+        <span class="k">if</span> <span class="n">grid_points_in_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">grid_points_in_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">day_counter</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">day_counter</span> <span class="o">*</span> <span class="n">t</span> <span class="o">==</span> <span class="n">grid_points_in_time</span>
+        <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;generated time grid isn&#39;t made of integers. &quot;</span>
+                <span class="s2">&quot;make sure that (t*day_counter) is an integer&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">z_v</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span> <span class="o">/</span> <span class="n">grid_points_in_time</span>
+
+        <span class="n">kv</span><span class="p">,</span> <span class="n">kr</span> <span class="o">=</span> <span class="n">_get_kvkr</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">kappa</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volvol</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">gamma1</span><span class="p">,</span> <span class="n">gamma2</span>
+        <span class="p">)</span>
+
+        <span class="n">kv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+        <span class="n">kr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_jitable_heston</span><span class="p">(</span>
+            <span class="n">kv</span><span class="p">,</span> <span class="n">kr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">z_v</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="p">,</span> <span class="n">grid_points_in_time</span>
+        <span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">coordinator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_HestonCoordinator</span></div>
+
+
+<span class="c1"># ====================Purely for compatiblity with MC engine=======================</span>
+<span class="k">class</span> <span class="nc">_HestonCoordinator</span><span class="p">(</span><span class="n">ProcessCoordinator</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="n">OptionABC</span><span class="p">,</span> <span class="n">hst</span><span class="p">:</span> <span class="n">Heston</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">option</span> <span class="o">=</span> <span class="n">option</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hst</span> <span class="o">=</span> <span class="n">hst</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">sim_t_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">hst</span><span class="o">.</span><span class="n">day_counter</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">hst</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">option</span><span class="o">.</span><span class="n">sim_t_array</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">hst</span><span class="o">.</span><span class="n">day_counter</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_points_per_path</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">sim_t_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_points_for_valuation</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">sim_t_array</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">generate_eps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_points_per_path</span><span class="p">))</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_points_per_path</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">z</span>
+
+    <span class="k">def</span> <span class="nf">paths_given_eps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hst</span><span class="o">.</span><span class="n">generate_path_given_uz</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">paths</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_points_for_valuation</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">shift</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">paths</span><span class="p">,</span> <span class="n">ds</span><span class="p">,</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;does not support calculating greeks or shifting paths&quot;</span>
+            <span class="s2">&quot;under Heston model at this point&quot;</span>
+        <span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.dateutil.date &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>qdpmc.dateutil.date</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qdpmc.dateutil.date</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Todo: test Calendar.add_holidays and Calendar.add_holiday_rule</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">qdpmc.dateutil._china_holidays</span> <span class="kn">import</span> <span class="n">_is_china_holidays</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;CHINA_HOLIDAYS&#39;</span><span class="p">]</span>
+
+<span class="n">CHINA_HOLIDAYS</span> <span class="o">=</span> <span class="n">_is_china_holidays</span>
+
+<span class="n">_DAYS_IN_MONTH</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="n">_DAYS_BEFORE_MONTH</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">dbm</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">_DAYS_IN_MONTH</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">_DAYS_BEFORE_MONTH</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dbm</span><span class="p">)</span>
+    <span class="n">dbm</span> <span class="o">+=</span> <span class="n">dim</span>
+<span class="k">del</span> <span class="n">dbm</span><span class="p">,</span> <span class="n">dim</span>
+
+
+<span class="k">def</span> <span class="nf">_is_leap</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return 1 if *year* is leap year else 0.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_next_month_same_day</span><span class="p">(</span><span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the date of same day next month. If next month does not have</span>
+<span class="sd">    same day, return the last day of next month.</span>
+
+<span class="sd">    For example:</span>
+<span class="sd">    datetime.date(2021, 1, 31) -&gt; datetime.date(2021, 2, 28)</span>
+<span class="sd">    datetime.date(2021, 4, 30) -&gt; datetime.date(2021, 5, 30)&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">_last_day</span> <span class="o">=</span> <span class="n">_DAYS_IN_MONTH</span><span class="p">[</span><span class="n">month</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">_is_leap</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="ow">and</span> <span class="n">month</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">_last_day</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="Calendar"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar">[docs]</a><span class="k">class</span> <span class="nc">Calendar</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">holiday_rule</span><span class="o">=</span><span class="n">CHINA_HOLIDAYS</span><span class="p">,</span> <span class="n">other_holidays</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># holiday rule taken as is</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_holiday_rule</span> <span class="o">=</span> <span class="n">holiday_rule</span>
+        <span class="k">if</span> <span class="n">other_holidays</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">holiday_rule</span> <span class="o">=</span> <span class="n">holiday_rule</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_other_holidays</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">_holiday_rule</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">holiday_rule</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="ow">or</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">other_holidays</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">holiday_rule</span> <span class="o">=</span> <span class="n">_holiday_rule</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_other_holidays</span> <span class="o">=</span> <span class="n">other_holidays</span>
+
+<div class="viewcode-block" id="Calendar.add_holidays"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.add_holidays">[docs]</a>    <span class="k">def</span> <span class="nf">add_holidays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">holidays</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add holidays to holiday rules. *holidays* should be iterable&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">holidays</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;holidays must be iterable&quot;</span><span class="p">)</span>
+        <span class="n">other_holidays</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_other_holidays</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">holidays</span><span class="p">)</span>
+        <span class="n">Calendar</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_holiday_rule</span><span class="p">,</span> <span class="n">other_holidays</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Calendar.add_holiday_rule"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.add_holiday_rule">[docs]</a>    <span class="k">def</span> <span class="nf">add_holiday_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">holiday_rule</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add holiday rules.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        holiday_rule : callable</span>
+<span class="sd">            A function that converts datetime.date to bool.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">holiday_rule</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;holiday_rule must be callable&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">_holiday_rule</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_holiday_rule</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="ow">or</span> <span class="n">holiday_rule</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="n">Calendar</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_holiday_rule</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_other_holidays</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Calendar.is_trading"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.is_trading">[docs]</a>    <span class="k">def</span> <span class="nf">is_trading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return if *date* trades.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date : datetime.date</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">date</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">holiday_rule</span><span class="p">(</span><span class="n">date</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Calendar.trading_days_between"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.trading_days_between">[docs]</a>    <span class="k">def</span> <span class="nf">trading_days_between</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">endpoints</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of trading days between *start* and *end*. Endpoints</span>
+<span class="sd">        are counted only if they are trading.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        start : datetime.date</span>
+<span class="sd">        end : datetime.date</span>
+<span class="sd">        endpoints : bool</span>
+<span class="sd">            Whether to count *start* and *end* if they are trading dates.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            A list of trading dates.</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        ``start`` and ``end`` are counted _only_ if they are trading dates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start date must be prior to end date&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">endpoints</span> <span class="k">else</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+        <span class="n">d_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="ow">and</span> <span class="n">endpoints</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">while</span> <span class="n">date</span> <span class="o">&lt;</span> <span class="n">end</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="ow">not</span> <span class="n">endpoints</span><span class="p">)):</span>
+            <span class="n">date</span> <span class="o">+=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+                <span class="n">d_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">d_list</span></div>
+
+<div class="viewcode-block" id="Calendar.offset"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.offset">[docs]</a>    <span class="k">def</span> <span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return date of trading day *n* days after *date*. *n* can be</span>
+<span class="sd">        negative but must be an integer.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date : datetime.date</span>
+<span class="sd">        n : int</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        datetime.date</span>
+<span class="sd">            The *n*-th trading date after *date*.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;n must be an integer&quot;</span><span class="p">)</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">date</span> <span class="o">+=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">date</span></div>
+
+<div class="viewcode-block" id="Calendar.periodic"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.periodic">[docs]</a>    <span class="k">def</span> <span class="nf">periodic</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">period</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+            <span class="n">if_close</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;next&quot;</span><span class="p">,</span>
+            <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generate periodical trading dates. Duplicates will be dropped so</span>
+<span class="sd">        the output list may be shorter than *count*. To force the length of</span>
+<span class="sd">        output to *count*, set *force* to *True*</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        start : datetime.date</span>
+<span class="sd">            The first date of the array of periodic trading dates.</span>
+<span class="sd">        period : str</span>
+<span class="sd">            String like &#39;Xm&#39;, &#39;Xw&#39;, and &#39;Xd&#39;, where X</span>
+<span class="sd">        count : int</span>
+<span class="sd">        if_close : bool</span>
+<span class="sd">        force : bool</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        ..ipython:: python</span>
+
+<span class="sd">            import datetime</span>
+<span class="sd">            calendar = qm.Calendar()</span>
+<span class="sd">            start_date = datetime.date(2019, 1, 31)</span>
+<span class="sd">            calendar.periodic(start, &#39;1m&#39;, 13)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">n</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">period</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">period</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;period must be a positive integer&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">if_close</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;next&quot;</span><span class="p">,</span> <span class="s2">&quot;prev&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;if_close must be one of &quot;next&quot; or &quot;prev&quot;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;given start date is not trading&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">unit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unit not understood&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">unit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">]:</span>
+            <span class="k">def</span> <span class="nf">_next_period</span><span class="p">(</span><span class="n">_date</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">_date</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">unit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]:</span>
+            <span class="k">def</span> <span class="nf">_next_period</span><span class="p">(</span><span class="n">_date</span><span class="p">):</span>
+                <span class="n">_day</span> <span class="o">=</span> <span class="n">_date</span><span class="o">.</span><span class="n">day</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                    <span class="n">_date</span> <span class="o">=</span> <span class="n">_next_month_same_day</span><span class="p">(</span><span class="n">_date</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">_day</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+                <span class="k">return</span> <span class="n">_date</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">_next_period</span><span class="p">(</span><span class="n">_date</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">_date</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">_next_period</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+            <span class="c1"># set date.day to start.day if period is given in month</span>
+            <span class="k">if</span> <span class="n">unit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">start</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">if_close</span> <span class="o">==</span> <span class="s2">&quot;next&quot;</span><span class="p">:</span>
+                    <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">o</span> <span class="o">=</span> <span class="n">date</span>
+
+            <span class="k">if</span> <span class="n">o</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+            <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="k">if</span> <span class="n">force</span> <span class="k">else</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="Calendar.to_scalar"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.to_scalar">[docs]</a>    <span class="k">def</span> <span class="nf">to_scalar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_arr</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert dates into integers given a start date.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        date_arr : array_like</span>
+<span class="sd">            An array of datetime.date objects.</span>
+<span class="sd">        start : datetime.date</span>
+<span class="sd">            The start date.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            A list of integers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">num_trading_days_between</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="k">for</span> <span class="n">end</span> <span class="ow">in</span> <span class="n">date_arr</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Calendar.num_trading_days_between"><a class="viewcode-back" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html#qdpmc.dateutil.date.Calendar.num_trading_days_between">[docs]</a>    <span class="k">def</span> <span class="nf">num_trading_days_between</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">start</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">end</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+            <span class="n">count_end</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return number of trading days between two dates. If these dates</span>
+<span class="sd">        are identical, return 0. *count_end* controls whether to count the</span>
+<span class="sd">        end date.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">trading_dates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trading_days_between</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">trading_dates</span><span class="p">)</span> <span class="o">-</span> <span class="n">count_end</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

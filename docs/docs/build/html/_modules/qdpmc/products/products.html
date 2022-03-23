@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.products.products &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>qdpmc.products.products</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qdpmc.products.products</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">qdpmc.structures</span> <span class="k">as</span> <span class="nn">structures</span>
+<span class="kn">import</span> <span class="nn">qdpmc.tools.payoffs</span> <span class="k">as</span> <span class="nn">pay</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">qdpmc.tools.helper</span> <span class="kn">import</span> <span class="n">arr_scalar_converter</span>
+<span class="kn">from</span> <span class="nn">qdpmc.dateutil</span> <span class="kn">import</span> <span class="n">Calendar</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="nb">any</span><span class="p">,</span> <span class="n">argmax</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SnowballProd&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_interval_coupon</span><span class="p">(</span>
+        <span class="n">coupon_rate</span><span class="p">,</span> <span class="n">principal</span><span class="p">,</span>
+        <span class="n">last_payment_date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+        <span class="n">next_payment_date</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">,</span>
+        <span class="n">day_counter</span><span class="o">=</span><span class="mi">365</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the amount of interval coupon between two payment dates.</span>
+<span class="sd">    Principle, coupon rate, and day counter are mandatory.&quot;&quot;&quot;</span>
+    <span class="n">td</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_payment_date</span> <span class="o">-</span> <span class="n">last_payment_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+    <span class="k">return</span> <span class="n">coupon_rate</span> <span class="o">*</span> <span class="n">principal</span> <span class="o">*</span> <span class="n">td</span> <span class="o">/</span> <span class="n">day_counter</span>
+
+
+<span class="k">def</span> <span class="nf">_update_day_arr</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="o">*</span><span class="n">more</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Here, arr is an ascending array of scalars and offset is a scalar. The function</span>
+<span class="sd">    returns the positive part of arr - offset. If more is passed in, it also returns</span>
+<span class="sd">    more[arr &gt; offset]&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">offset</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arr</span><span class="p">,</span> <span class="o">*</span><span class="n">more</span>
+    <span class="n">nn</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">offset</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">more</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">nn</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">nn</span><span class="p">):]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">more</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nn</span>
+
+
+<span class="k">def</span> <span class="nf">_check_ob_dates</span><span class="p">(</span><span class="n">ob_dates</span><span class="p">,</span> <span class="n">calendar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if all dates in ob_dates are trading days. If True, return ob_dates</span>
+<span class="sd">    as-is. Otherwise raise ValueError.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">ob_dates</span><span class="p">:</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">_check_is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">calendar</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">calendar</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> does not trade&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ob_dates</span>
+
+
+<span class="k">def</span> <span class="nf">_check_is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">calendar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if *start* is trading.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is not a datetime.date object&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">calendar</span><span class="o">.</span><span class="n">is_trading</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;given non-trading day: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">date</span>
+
+
+<span class="k">def</span> <span class="nf">_check_payoff</span><span class="p">(</span><span class="n">payoff</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if payoff is a *Payoff* object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">payoff</span><span class="p">,</span> <span class="n">pay</span><span class="o">.</span><span class="n">Payoff</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;payoff must be a Payoff object&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">payoff</span>
+
+
+<span class="k">def</span> <span class="nf">_check_calendar</span><span class="p">(</span><span class="n">calendar</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if calendar is a Calendar object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">calendar</span><span class="p">,</span> <span class="n">Calendar</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;calendar must be Calendar object&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">calendar</span>
+
+
+<div class="viewcode-block" id="SnowballProd"><a class="viewcode-back" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html#qdpmc.products.products.SnowballProd">[docs]</a><span class="k">class</span> <span class="nc">SnowballProd</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A snowball structure is an autocallable structured product with snowballing</span>
+<span class="sd">    coupon payments.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    start_date : datetime.date</span>
+<span class="sd">        A datetime.date object indicating the starting day of the</span>
+<span class="sd">        structured product. It must be a trading as determined by *calendar*</span>
+<span class="sd">    initial_price : scalar</span>
+<span class="sd">        The price of the underlying asset on *start_date*.</span>
+<span class="sd">    ko_barriers : scalar or array_like</span>
+<span class="sd">        The knock-out level of the structure. It can either be</span>
+<span class="sd">        a scalar or be an array of numbers. If a scalar is passed in, it will be</span>
+<span class="sd">        treated as the time-invariant barrier level. If an array is passed in,</span>
+<span class="sd">        it must match the length of *ko_ob_dates*.</span>
+<span class="sd">    ko_ob_dates : array_like</span>
+<span class="sd">        The observation dates for knock-out. It must be an array</span>
+<span class="sd">        of datetime.date objects. All of these dates must be trading dates as</span>
+<span class="sd">        determined by *calendar*.</span>
+<span class="sd">    ki_barriers : scalar or array_like</span>
+<span class="sd">        Similar to *ko_barriers*. It controls the level of knock-in barrier.</span>
+<span class="sd">    ki_ob_dates : array_like or &quot;daily&quot;</span>
+<span class="sd">        similar to *ko_ob_dates*. *&quot;daily&quot;* indicates daily observation for the</span>
+<span class="sd">        knock-in event.</span>
+<span class="sd">    ki_payoff : Payoff</span>
+<span class="sd">        Controls payoff which applies when, during the life of the contract,</span>
+<span class="sd">        a knock-in event occurs while a knock-out does not.</span>
+<span class="sd">    ko_coupon_rate : scalar</span>
+<span class="sd">        the coupon rate that applies in the event of a knock-out.</span>
+<span class="sd">    maturity_coupon_rate : scalar</span>
+<span class="sd">        this rate applies when there is neither knock-out nor knock-in during</span>
+<span class="sd">        the entire life of the contract.</span>
+<span class="sd">    calendar : Calendar</span>
+<span class="sd">        *Calendar* object. If *None* a default calendar will be used.</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The day count convention for coupon payment is *ACT/365*.</span>
+<span class="sd">    The maturity is ``ko_ob_dates[-1]``.</span>
+<span class="sd">    Notional principal is equal to ``initial_price``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        import datetime</span>
+<span class="sd">        # instantiate a Calendar object so we can use it to generate periodic</span>
+<span class="sd">        # datetime.date array</span>
+<span class="sd">        calendar = qm.Calendar()</span>
+<span class="sd">        # this should be a trading day</span>
+<span class="sd">        start = datetime.date(2019, 1, 31)</span>
+<span class="sd">        assert calendar.is_trading(start)</span>
+<span class="sd">        # monthly trading dates excluding the start</span>
+<span class="sd">        monthly_dates = calendar.periodic(start, &quot;1m&quot;, 13)[1:]</span>
+<span class="sd">        # a short put</span>
+<span class="sd">        short_put = - qm.Payoff(qm.plain_vanilla, option_type=&quot;put&quot;,</span>
+<span class="sd">                                strike=100)</span>
+<span class="sd">        # instantiate the structured product</span>
+<span class="sd">        option = qm.SnowballProd(</span>
+<span class="sd">            start_date=start, initial_price=100, ko_barriers=105,</span>
+<span class="sd">            ko_ob_dates=monthly_dates, ki_barriers=80, ki_ob_dates=&quot;daily&quot;,</span>
+<span class="sd">            ki_payoff=short_put, ko_coupon_rate=0.15,</span>
+<span class="sd">            maturity_coupon_rate=0.15</span>
+<span class="sd">        )</span>
+<span class="sd">        mc = qm.MonteCarlo(100, 1000)</span>
+<span class="sd">        bs = qm.BlackScholes(0.03, 0, 0.25, 252)</span>
+<span class="sd">        # value the contract given day and spot price</span>
+<span class="sd">        option.value(datetime.date(2019, 5, 7), 102, False, mc, bs)&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">initial_price</span><span class="p">,</span> <span class="n">ko_barriers</span><span class="p">,</span>
+            <span class="n">ko_ob_dates</span><span class="p">,</span> <span class="n">ki_barriers</span><span class="p">,</span> <span class="n">ki_ob_dates</span><span class="p">,</span> <span class="n">ki_payoff</span><span class="p">,</span>
+            <span class="n">ko_coupon_rate</span><span class="p">,</span> <span class="n">maturity_coupon_rate</span><span class="p">,</span>
+            <span class="n">calendar</span><span class="p">:</span> <span class="n">Calendar</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="n">_inputs</span> <span class="o">=</span> <span class="nb">locals</span><span class="p">()</span>
+        <span class="n">_inputs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;self&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span> <span class="o">=</span> <span class="n">_inputs</span>
+
+        <span class="k">if</span> <span class="n">calendar</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">calendar</span> <span class="o">=</span> <span class="n">Calendar</span><span class="p">()</span>
+        <span class="c1"># check values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calendar</span> <span class="o">=</span> <span class="n">_check_calendar</span><span class="p">(</span><span class="n">calendar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_date</span> <span class="o">=</span> <span class="n">_check_is_trading</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">calendar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ki_payoff</span> <span class="o">=</span> <span class="n">_check_payoff</span><span class="p">(</span><span class="n">ki_payoff</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ko_ob_dates</span> <span class="o">=</span> <span class="n">_check_ob_dates</span><span class="p">(</span><span class="n">ko_ob_dates</span><span class="p">,</span> <span class="n">calendar</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># check if ki_ob_dates are trading</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ki_ob_dates</span> <span class="o">=</span> <span class="n">_check_ob_dates</span><span class="p">(</span><span class="n">ki_ob_dates</span><span class="p">,</span> <span class="n">calendar</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c1"># try &quot;daily&quot; if ki_ob_dates are not datetime.date objects</span>
+            <span class="k">if</span> <span class="n">ki_ob_dates</span> <span class="o">!=</span> <span class="s2">&quot;daily&quot;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;ki_ob_dates must either be an array of &quot;</span>
+                    <span class="s2">&quot;trading days or &#39;daily, got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ki_ob_dates</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">ko_ob_dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">ki_ob_dates</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">trading_days_between</span><span class="p">(</span>
+                    <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="kc">True</span>
+                <span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ki_ob_dates</span> <span class="o">=</span> <span class="n">ki_ob_dates</span>
+        <span class="c1"># those that need not be checked</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_price</span> <span class="o">=</span> <span class="n">initial_price</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ko_barriers</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">ko_barriers</span><span class="p">,</span> <span class="n">ko_ob_dates</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ki_barriers</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">ki_barriers</span><span class="p">,</span> <span class="n">ki_ob_dates</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ko_coupon_rate</span> <span class="o">=</span> <span class="n">ko_coupon_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maturity_coupon_rate</span> <span class="o">=</span> <span class="n">maturity_coupon_rate</span>
+        <span class="c1"># inferred and calculated values</span>
+        <span class="c1"># these values and arrays can be directly passed to the structure</span>
+        <span class="c1"># constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maturity_date</span> <span class="o">=</span> <span class="n">ko_ob_dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_out</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">to_scalar</span><span class="p">(</span><span class="n">ko_ob_dates</span><span class="p">,</span> <span class="n">start_date</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_in</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">to_scalar</span><span class="p">(</span><span class="n">ki_ob_dates</span><span class="p">,</span> <span class="n">start_date</span><span class="p">)</span>
+        <span class="n">_frozen</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span>
+            <span class="n">_interval_coupon</span><span class="p">,</span> <span class="n">principal</span><span class="o">=</span><span class="n">initial_price</span><span class="p">,</span>
+            <span class="n">last_payment_date</span><span class="o">=</span><span class="n">start_date</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maturity_coupon_pmt</span> <span class="o">=</span> <span class="n">_frozen</span><span class="p">(</span>
+            <span class="n">coupon_rate</span><span class="o">=</span><span class="n">maturity_coupon_rate</span><span class="p">,</span>
+            <span class="n">next_payment_date</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maturity_date</span>
+        <span class="p">)</span>
+        <span class="c1"># convert a constant into a Payoff object, so it can be passed to the</span>
+        <span class="c1"># structure constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nk_payoff</span> <span class="o">=</span> <span class="n">pay</span><span class="o">.</span><span class="n">Payoff</span><span class="p">(</span>
+            <span class="n">pay</span><span class="o">.</span><span class="n">constant_payoff</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maturity_coupon_pmt</span>
+        <span class="p">)</span>
+        <span class="c1"># infer from given values the rebate array that can be passed to the</span>
+        <span class="c1"># structure constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ko_rebate</span> <span class="o">=</span> <span class="p">[</span><span class="n">_frozen</span><span class="p">(</span>
+            <span class="n">coupon_rate</span><span class="o">=</span><span class="n">ko_coupon_rate</span><span class="p">,</span> <span class="n">next_payment_date</span><span class="o">=</span><span class="n">d</span>
+        <span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ko_ob_dates</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_frozen</span> <span class="o">=</span> <span class="n">_frozen</span>
+
+<div class="viewcode-block" id="SnowballProd.to_structure"><a class="viewcode-back" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html#qdpmc.products.products.SnowballProd.to_structure">[docs]</a>    <span class="k">def</span> <span class="nf">to_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valuation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">ki_flag</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the structure used to value the product.&quot;&quot;&quot;</span>
+        <span class="n">valuation_date</span> <span class="o">=</span> <span class="n">_check_is_trading</span><span class="p">(</span><span class="n">valuation_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">calendar</span><span class="p">)</span>
+        <span class="n">td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calendar</span><span class="o">.</span><span class="n">num_trading_days_between</span><span class="p">(</span>
+            <span class="n">start</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">valuation_date</span><span class="p">,</span> <span class="n">count_end</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">ob_days_out</span><span class="p">,</span> <span class="n">rebate_out</span><span class="p">,</span> <span class="n">barrier_out</span> <span class="o">=</span> <span class="n">_update_day_arr</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_out</span><span class="p">,</span> <span class="n">td</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ko_rebate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ko_barriers</span>
+        <span class="p">)</span>
+        <span class="n">ob_days_in</span><span class="p">,</span> <span class="n">barrier_in</span> <span class="o">=</span> <span class="n">_update_day_arr</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_in</span><span class="p">,</span> <span class="n">td</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ki_barriers</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ki_flag</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">UpOutDownIn</span><span class="p">(</span>
+                <span class="n">spot</span><span class="o">=</span><span class="n">spot</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="o">=</span><span class="n">ob_days_out</span><span class="p">,</span> <span class="n">rebate_out</span><span class="o">=</span><span class="n">rebate_out</span><span class="p">,</span>
+                <span class="n">ob_days_in</span><span class="o">=</span><span class="n">ob_days_in</span><span class="p">,</span> <span class="n">payoff_in</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ki_payoff</span><span class="p">,</span>
+                <span class="n">upper_barrier_out</span><span class="o">=</span><span class="n">barrier_out</span><span class="p">,</span> <span class="n">lower_barrier_in</span><span class="o">=</span><span class="n">barrier_in</span><span class="p">,</span>
+                <span class="n">payoff_nk</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nk_payoff</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">UpOut</span><span class="p">(</span>
+                <span class="n">spot</span><span class="o">=</span><span class="n">spot</span><span class="p">,</span> <span class="n">ob_days</span><span class="o">=</span><span class="n">ob_days_out</span><span class="p">,</span> <span class="n">rebate</span><span class="o">=</span><span class="n">rebate_out</span><span class="p">,</span>
+                <span class="n">payoff</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ki_payoff</span><span class="p">,</span> <span class="n">barrier</span><span class="o">=</span><span class="n">barrier_out</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
+
+<div class="viewcode-block" id="SnowballProd.value"><a class="viewcode-back" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html#qdpmc.products.products.SnowballProd.value">[docs]</a>    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valuation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">ki_flag</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Value the product given a date and a spot price. *args* and *kwargs*</span>
+<span class="sd">        are positional and keyword arguments forwarded to</span>
+<span class="sd">        :meth:`qdpmc.engine.monte_carlo.MonteCarlo.calc`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        valuation_date : datetime.date</span>
+<span class="sd">            the valuate date. It must be a trading day.</span>
+<span class="sd">        spot : scalar</span>
+<span class="sd">            the spot price.</span>
+<span class="sd">        ki_flag: bool</span>
+<span class="sd">            whether to mark the product as knock-in. If *True*, the</span>
+<span class="sd">            structure is an up-and-out option.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_structure</span><span class="p">(</span><span class="n">valuation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">ki_flag</span><span class="p">)</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SnowballProd.find_coup_rate"><a class="viewcode-back" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html#qdpmc.products.products.SnowballProd.find_coup_rate">[docs]</a>    <span class="k">def</span> <span class="nf">find_coup_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">process</span><span class="p">,</span> <span class="n">target_pv</span><span class="p">,</span>
+                       <span class="n">entropy</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">caller</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Give a target PV, find the coupon rate.</span>
+
+<span class="sd">        *entropy* and *caller* are forwarded to</span>
+<span class="sd">        :meth:`qdpmc.engine.monte_carlo.MonteCarlo.calc`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">entropy</span>
+
+        <span class="k">def</span> <span class="nf">_call</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+            <span class="k">nonlocal</span> <span class="n">e</span>
+            <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">most_recent_entropy</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span>
+            <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;ko_coupon_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;maturity_coupon_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_price</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>
+                           <span class="n">engine</span><span class="p">,</span> <span class="n">process</span><span class="p">,</span> <span class="n">entropy</span><span class="o">=</span><span class="n">e</span><span class="p">,</span>
+                           <span class="n">caller</span><span class="o">=</span><span class="n">caller</span><span class="p">)</span> <span class="o">-</span> <span class="n">target_pv</span>
+            <span class="k">return</span> <span class="n">diff</span>
+
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">_call</span><span class="p">,</span> <span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ko_coupon_rate</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">diff</span><span class="o">=</span><span class="n">_call</span><span class="p">([</span><span class="n">rate</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="SnowballProd.backtest"><a class="viewcode-back" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html#qdpmc.products.products.SnowballProd.backtest">[docs]</a>    <span class="k">def</span> <span class="nf">backtest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daily_underlying_asset_prices</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;backtest the performance of the product in the option holders&#39; view</span>
+<span class="sd">        with given underlying asset price series, find out the actual holding period and its final payoff</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        daily_underlying_asset_prices: array_like</span>
+<span class="sd">            the simulated or historical daily underlying asset price series for performance backtest, the length of the</span>
+<span class="sd">            price series must be greater than the option&#39;s life</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        end_date : datetime.date</span>
+<span class="sd">            the actual end date of the trade, could possibly be earlier than the maturity date</span>
+<span class="sd">        payout: double</span>
+<span class="sd">            the actual payout of the product to the option holder</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">strct</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_structure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_price</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">ko_ob_days</span> <span class="o">=</span> <span class="n">strct</span><span class="o">.</span><span class="n">ob_days_out</span>
+        <span class="n">ki_ob_days</span> <span class="o">=</span> <span class="n">strct</span><span class="o">.</span><span class="n">ob_days_in</span>
+        <span class="n">ko_barriers</span> <span class="o">=</span> <span class="n">strct</span><span class="o">.</span><span class="n">upper_barrier_out</span>
+        <span class="n">ki_barriers</span> <span class="o">=</span> <span class="n">strct</span><span class="o">.</span><span class="n">log_barrier_in</span>
+        <span class="n">n_days</span> <span class="o">=</span> <span class="n">ko_ob_days</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">rebates</span> <span class="o">=</span> <span class="n">strct</span><span class="o">.</span><span class="n">rebate_out</span>
+
+        <span class="n">prices</span> <span class="o">=</span> <span class="n">daily_underlying_asset_prices</span> <span class="o">/</span> <span class="n">daily_underlying_asset_prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_price</span>
+        <span class="n">knocked_out</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">ko_ob_days</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ko_barriers</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">knocked_out</span><span class="p">:</span>
+            <span class="n">ko_index</span> <span class="o">=</span> <span class="n">argmax</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">ko_ob_days</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ko_barriers</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ko_ob_dates</span><span class="p">[</span><span class="n">ko_index</span><span class="p">],</span> <span class="n">rebates</span><span class="p">[</span><span class="n">ko_index</span><span class="p">]</span>
+        <span class="n">knocked_in</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">ki_ob_days</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ki_barriers</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">knocked_in</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maturity_date</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ki_payoff</span><span class="p">(</span><span class="n">prices</span><span class="p">[</span><span class="n">n_days</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maturity_date</span><span class="p">,</span> <span class="n">rebates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">SingleBarrierOption</span><span class="p">:</span>
+    <span class="n">_structure</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">SingleBarrierOption</span>
+    <span class="n">_out</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">barrier</span><span class="p">,</span> <span class="n">rebate</span><span class="p">,</span> <span class="n">ob_dates</span><span class="p">,</span> <span class="n">payoff</span><span class="p">,</span> <span class="n">calendar</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calendar</span> <span class="o">=</span> <span class="n">_check_calendar</span><span class="p">(</span><span class="n">calendar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">_check_is_trading</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">calendar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">barrier</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">barrier</span><span class="p">,</span> <span class="n">ob_dates</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_out</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rebate</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">rebate</span><span class="p">,</span> <span class="n">ob_dates</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">rebate</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;rebate of knock-in options should be a scalar&quot;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rebate</span> <span class="o">=</span> <span class="n">rebate</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_dates</span> <span class="o">=</span> <span class="n">ob_dates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payoff</span> <span class="o">=</span> <span class="n">_check_payoff</span><span class="p">(</span><span class="n">payoff</span><span class="p">)</span>
+        <span class="c1"># scalars</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">to_scalar</span><span class="p">(</span><span class="n">ob_dates</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">to_structure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valuation_date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spot</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">td</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calendar</span><span class="o">.</span><span class="n">num_trading_days_between</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">valuation_date</span><span class="p">)</span>
+        <span class="n">ob_days</span><span class="p">,</span> <span class="n">rebate</span><span class="p">,</span> <span class="n">barrier</span> <span class="o">=</span> <span class="n">_update_day_arr</span><span class="p">(</span>
+            <span class="n">valuation_date</span><span class="p">,</span> <span class="n">td</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rebate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">barrier</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">_structure</span><span class="p">(</span>
+            <span class="n">spot</span><span class="o">=</span><span class="n">spot</span><span class="p">,</span> <span class="n">barrier</span><span class="o">=</span><span class="n">barrier</span><span class="p">,</span> <span class="n">rebate</span><span class="o">=</span><span class="n">rebate</span><span class="p">,</span>
+            <span class="n">ob_days</span><span class="o">=</span><span class="n">ob_days</span><span class="p">,</span> <span class="n">payoff</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">payoff</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valuation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_structure</span><span class="p">(</span><span class="n">valuation_date</span><span class="p">,</span> <span class="n">spot</span>
+                                 <span class="p">)</span><span class="o">.</span><span class="n">calc_value</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">UpOut</span><span class="p">(</span><span class="n">SingleBarrierOption</span><span class="p">):</span>
+    <span class="n">_structure</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">UpOut</span>
+
+
+<span class="k">class</span> <span class="nc">DownOut</span><span class="p">(</span><span class="n">SingleBarrierOption</span><span class="p">):</span>
+    <span class="n">_structure</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">DownOut</span>
+
+
+<span class="k">class</span> <span class="nc">UpIn</span><span class="p">(</span><span class="n">SingleBarrierOption</span><span class="p">):</span>
+    <span class="n">_structure</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">UpIn</span>
+    <span class="n">_out</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="k">class</span> <span class="nc">DownIn</span><span class="p">(</span><span class="n">SingleBarrierOption</span><span class="p">):</span>
+    <span class="n">_structure</span> <span class="o">=</span> <span class="n">structures</span><span class="o">.</span><span class="n">DownIn</span>
+    <span class="n">_out</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

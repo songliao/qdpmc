@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.tools.payoffs &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>qdpmc.tools.payoffs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qdpmc.tools.payoffs</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Todo: make it convenient to add, reverse, etc., payoff functions</span>
+<span class="c1"># Todo: add documentation to Payoff</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="plain_vanilla"><a class="viewcode-back" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html#qdpmc.tools.payoffs.plain_vanilla">[docs]</a><span class="k">def</span> <span class="nf">plain_vanilla</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">,</span> <span class="n">strike</span><span class="p">,</span> <span class="n">option_type</span><span class="o">=</span><span class="s1">&#39;call&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A plain-vanilla payoff function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    underlying_price : ndarray</span>
+<span class="sd">        An array of price of the underlying asset.</span>
+<span class="sd">    strike : scalar</span>
+<span class="sd">        The strike of the option.</span>
+<span class="sd">    option_type : str</span>
+<span class="sd">        &quot;put&quot; or &quot;call&quot;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray</span>
+<span class="sd">        The payoff array.&quot;&quot;&quot;</span>
+    <span class="n">underlying_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">option_type</span> <span class="o">==</span> <span class="s1">&#39;put&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">underlying_price</span> <span class="o">-</span> <span class="n">strike</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">option_type</span> <span class="o">==</span> <span class="s1">&#39;call&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">underlying_price</span> <span class="o">-</span> <span class="n">strike</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Option type should be &#39;call&#39; or &#39;put&#39;, got </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">option_type</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cash_or_nothing"><a class="viewcode-back" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html#qdpmc.tools.payoffs.cash_or_nothing">[docs]</a><span class="k">def</span> <span class="nf">cash_or_nothing</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">,</span> <span class="n">strike</span><span class="p">,</span> <span class="n">cash_amount</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A cash-or-nothing payoff function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    underlying_price : ndarray</span>
+<span class="sd">        An array of price of the underlying asset.</span>
+<span class="sd">    strike : scalar</span>
+<span class="sd">        The strike of the option.</span>
+<span class="sd">    cash_amount : scalar</span>
+<span class="sd">        Amount of cash paid.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray</span>
+<span class="sd">        The payoff array.&quot;&quot;&quot;</span>
+    <span class="n">payoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">cash_amount</span><span class="p">))</span>
+    <span class="n">payoff</span><span class="p">[</span><span class="n">underlying_price</span> <span class="o">&lt;=</span> <span class="n">strike</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">payoff</span></div>
+
+
+<div class="viewcode-block" id="asset_or_nothing"><a class="viewcode-back" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html#qdpmc.tools.payoffs.asset_or_nothing">[docs]</a><span class="k">def</span> <span class="nf">asset_or_nothing</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">,</span> <span class="n">strike</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An asset-or-nothing payoff function</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    underlying_price : ndarray</span>
+<span class="sd">        An array of price of the underlying asset.</span>
+<span class="sd">    strike : scalar</span>
+<span class="sd">        The strike of the option.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray</span>
+<span class="sd">        The payoff array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">payoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">),</span> <span class="n">underlying_price</span><span class="p">)</span>
+    <span class="n">payoff</span><span class="p">[</span><span class="n">underlying_price</span> <span class="o">&lt;=</span> <span class="n">strike</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">payoff</span></div>
+
+
+<span class="k">def</span> <span class="nf">constant_payoff</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">underlying_price</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">amount</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="Payoff"><a class="viewcode-back" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html#qdpmc.tools.payoffs.Payoff">[docs]</a><span class="k">class</span> <span class="nc">Payoff</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A class that allows payoff functions to be added, negated, and scalar-multiplied.</span>
+
+
+<span class="sd">    The first argument *func* must be callable, and the first argument of it must be</span>
+<span class="sd">    the array of underlying asset prices.</span>
+<span class="sd">    *args* and *keywords* contain arguments other than the price array of *func*.</span>
+<span class="sd">    Calls to a *Payoff* object will be forwarded to *func* with the price array. Make</span>
+<span class="sd">    sure that all other necessary arguments are specified, or an error will be raised.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Here are some examples.</span>
+
+<span class="sd">    .. ipython:: python</span>
+
+<span class="sd">        def my_payoff_func(asset_price, param1, param2):</span>
+<span class="sd">            return param1 * np.array(asset_price) + param2</span>
+
+<span class="sd">        my_payoff = qm.Payoff(</span>
+<span class="sd">            func=my_payoff_func,</span>
+<span class="sd">            param1 = 3.0,</span>
+<span class="sd">            param2 = 2.0</span>
+<span class="sd">        )</span>
+
+<span class="sd">        my_payoff([1, 2, 3, 4, 5])</span>
+<span class="sd">        -my_payoff([1, 2, 3, 4, 5])</span>
+<span class="sd">        payoff25 = 2.5 * my_payoff</span>
+<span class="sd">        payoff25([1, 2, 3, 4, 5])</span>
+
+<span class="sd">    The user function should implement vectorization whenever possible to</span>
+<span class="sd">    achieve maximum speed of computation.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The first argument must be callable&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Raise an error if args and keywords are already passed and func is a</span>
+        <span class="c1"># Payoff instance since arguments of func.func get multiple values.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">Payoff</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">args</span> <span class="ow">or</span> <span class="n">keywords</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;No arguments should be passed when func &quot;</span>
+                    <span class="s2">&quot;is a Payoff instance&quot;</span>
+                <span class="p">)</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">func</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">args</span>
+            <span class="n">keywords</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">keywords</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">keywords</span> <span class="o">=</span> <span class="n">keywords</span>
+
+<div class="viewcode-block" id="Payoff.to_log"><a class="viewcode-back" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html#qdpmc.tools.payoffs.Payoff.to_log">[docs]</a>    <span class="k">def</span> <span class="nf">to_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert the payoff function to log.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">_func</span><span class="p">(</span><span class="n">log_return</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_return</span><span class="p">)</span> <span class="o">*</span> <span class="n">spot</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Payoff</span><span class="p">(</span><span class="n">_func</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_partial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">asset_price</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">asset_price</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">keywords</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">asset_price</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partial</span><span class="p">(</span><span class="n">asset_price</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Payoff</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Payoff can only be added to another Payoff&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">asset_price</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partial</span><span class="p">(</span><span class="n">asset_price</span><span class="p">)</span> <span class="o">+</span> <span class="n">other</span><span class="p">(</span><span class="n">asset_price</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Payoff</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Payoff</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Payoff can only be subtracted from another Payoff&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">asset_price</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partial</span><span class="p">(</span><span class="n">asset_price</span><span class="p">)</span> <span class="o">-</span> <span class="n">other</span><span class="p">(</span><span class="n">asset_price</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Payoff</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">asset_price</span><span class="p">):</span>
+            <span class="k">return</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_partial</span><span class="p">(</span><span class="n">asset_price</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Payoff</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scalar</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">asset_price</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">scalar</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_partial</span><span class="p">(</span><span class="n">asset_price</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">Payoff</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="fm">__mul__</span> <span class="o">=</span> <span class="fm">__rmul__</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>qdpmc.structures.autocalls &mdash; QdpMC 0.13.1a documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> QdpMC
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage.html#get-started">Get started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#import-modules">Import modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#set-up-parameters">Set up parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#single-barrier-options">Single-barrier options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#calculate-greeks">Calculate Greeks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#re-use-random-numbers">Re-use random numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#time-varying-barrier-level">Time-varying barrier level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage.html#define-payoff-function">Define payoff function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#structures">Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpOut.html">qdpmc.structures.barrier_options.UpOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.UpIn.html">qdpmc.structures.barrier_options.UpIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownOut.html">qdpmc.structures.barrier_options.DownOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DownIn.html">qdpmc.structures.barrier_options.DownIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleOut.html">qdpmc.structures.barrier_options.DoubleOut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.barrier_options.DoubleIn.html">qdpmc.structures.barrier_options.DoubleIn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html">qdpmc.structures.autocalls.StandardSnowball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html">qdpmc.structures.autocalls.UpOutDownIn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#payoffs">Payoffs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.plain_vanilla.html">qdpmc.tools.payoffs.plain_vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.cash_or_nothing.html">qdpmc.tools.payoffs.cash_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.asset_or_nothing.html">qdpmc.tools.payoffs.asset_or_nothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.tools.payoffs.Payoff.html">qdpmc.tools.payoffs.Payoff</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#products">Products</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.products.products.SnowballProd.html">qdpmc.products.products.SnowballProd</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#market-models">Market Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.BlackScholes.html">qdpmc.model.market_process.BlackScholes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.model.market_process.Heston.html">qdpmc.model.market_process.Heston</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.engine.monte_carlo.MonteCarlo.html">qdpmc.engine.monte_carlo.MonteCarlo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#date-utilities">Date Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../_autosummary/qdpmc.dateutil.date.Calendar.html">qdpmc.dateutil.date.Calendar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QdpMC</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>qdpmc.structures.autocalls</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for qdpmc.structures.autocalls</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Todo: tying for ob_days</span>
+<span class="c1"># Todo: test UpOutDownIn</span>
+<span class="c1"># Todo: add documentation to UpOutDownIn</span>
+<span class="c1"># Todo: Update documentation for Payoff</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module implements standard Monte Carlo method</span>
+<span class="sd">for valuation of typical autocall structures:</span>
+
+<span class="sd">* Standard snowball structure</span>
+
+<span class="sd">This module provides a flexible and intuitive API for</span>
+<span class="sd">Monte Carlo pricing of barrier options. It allows for</span>
+
+<span class="sd">* Time-varying level for both knock-out barrier and knock-in barrier.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">qdpmc.tools.helper</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">up_ko_t_and_surviving_paths</span><span class="p">,</span>
+    <span class="n">down_ki_paths</span><span class="p">,</span>
+    <span class="n">arr_scalar_converter</span><span class="p">,</span>
+    <span class="n">merge_days</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">qdpmc.tools.payoffs</span> <span class="kn">import</span> <span class="n">plain_vanilla</span>
+<span class="kn">from</span> <span class="nn">qdpmc.structures.base</span> <span class="kn">import</span> <span class="n">StructureMC</span>
+<span class="kn">from</span> <span class="nn">qdpmc.structures._docs</span> <span class="kn">import</span> <span class="n">_pv_log_paths_docs</span>
+<span class="kn">from</span> <span class="nn">qdpmc._decorators</span> <span class="kn">import</span> <span class="n">DocstringWriter</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;StandardSnowball&#39;</span><span class="p">,</span> <span class="s1">&#39;UpOutDownIn&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="StandardSnowball"><a class="viewcode-back" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html#qdpmc.structures.autocalls.StandardSnowball">[docs]</a><span class="k">class</span> <span class="nc">StandardSnowball</span><span class="p">(</span><span class="n">StructureMC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">barrier_out</span><span class="p">,</span> <span class="n">barrier_in</span><span class="p">,</span> <span class="n">ob_days_in</span><span class="p">,</span>
+            <span class="n">ob_days_out</span><span class="p">,</span> <span class="n">ko_coupon</span><span class="p">,</span> <span class="n">full_coupon</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A standard snowball structure.</span>
+
+
+<span class="sd">        A standard snowball structure gives its holder a large payoff if</span>
+<span class="sd">        the price of the underlying asset stays between a certain range.</span>
+<span class="sd">        If the price of the underlying asset exceeds the knock-out barrier</span>
+<span class="sd">        on any observation day, the contract ends immediately and coupon</span>
+<span class="sd">        is paid to the holder with the amount depending on the day of knock-out.</span>
+<span class="sd">        Major reason for large loss to the holder could be a plummet in the</span>
+<span class="sd">        price of the underlying asset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        spot : scalar</span>
+<span class="sd">            The spot (i.e. on the valuation day) of the price of the underlying asset.</span>
+<span class="sd">        barrier_out : scalar or array_like</span>
+<span class="sd">            The knock-out barrier level. Can be either a scalar</span>
+<span class="sd">            or an array. If a scalar is passed, it will be treated as the time-</span>
+<span class="sd">            invariant level of barrier. If an array is passed, it must match</span>
+<span class="sd">            the length of *ob_days_out*.</span>
+<span class="sd">        barrier_in : scalar or array_like</span>
+<span class="sd">            The knock-in barrier level. Similar to *barrier-out*.</span>
+<span class="sd">        ob_days_in : array_like</span>
+<span class="sd">            The observation day for knock-in. Must be an array of</span>
+<span class="sd">            integers with each of its elements indicating the number of days that</span>
+<span class="sd">            an observation day is away from the valuation day.</span>
+<span class="sd">        ob_days_out : array_like</span>
+<span class="sd">            The observation day for knock-out. Similar to *ob_days_in*.</span>
+<span class="sd">        ko_coupon : array_like</span>
+<span class="sd">            Coupon paid to the holder in a knock-out event.</span>
+<span class="sd">            Must match the length of *ob_days_out*. Note that this should be specified</span>
+<span class="sd">            in absolute amounts, not in percentages.</span>
+<span class="sd">        full_coupon : scalar</span>
+<span class="sd">            Coupon paid to the holder if the contract survives to maturity day without</span>
+<span class="sd">            knock-out or knock-in. Note that this should be specified in absolute</span>
+<span class="sd">            amounts, not in percentages.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        .. ipython:: python</span>
+
+<span class="sd">            option = qm.StandardSnowball(</span>
+<span class="sd">                spot=100,</span>
+<span class="sd">                barrier_out=105,</span>
+<span class="sd">                barrier_in=80,</span>
+<span class="sd">                ob_days_in=np.linspace(1, 252, 252),</span>
+<span class="sd">                ob_days_out=np.linspace(1, 252, 12),</span>
+<span class="sd">                ko_coupon=np.linspace(1, 15, 12),</span>
+<span class="sd">                full_coupon=15</span>
+<span class="sd">            )</span>
+<span class="sd">            mc = qm.MonteCarlo(125, 800)</span>
+<span class="sd">            bs = qm.BlackScholes(0.03, 0, 0.25, 252)</span>
+<span class="sd">            option.calc_value(mc, bs, request_greeks=True)&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spot</span> <span class="o">=</span> <span class="n">spot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_strike</span> <span class="o">=</span> <span class="n">spot</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">barrier_out</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">barrier_out</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">barrier_in</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">barrier_in</span><span class="p">,</span> <span class="n">ob_days_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_in</span> <span class="o">=</span> <span class="n">ob_days_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_out</span> <span class="o">=</span> <span class="n">ob_days_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ko_coupon</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">ko_coupon</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">full_coupon</span> <span class="o">=</span> <span class="n">full_coupon</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">barrier_in</span> <span class="o">/</span> <span class="n">spot</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">barrier_out</span> <span class="o">/</span> <span class="n">spot</span><span class="p">)</span>
+        <span class="n">_t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_out</span> <span class="o">=</span> <span class="n">merge_days</span><span class="p">(</span><span class="n">ob_days_in</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sim_t_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">_t</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_spot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Spot price should be positive.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spot</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="c1"># do not forget to reset log barriers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">barrier_in</span> <span class="o">/</span> <span class="n">val</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">barrier_out</span> <span class="o">/</span> <span class="n">val</span><span class="p">)</span>
+
+<div class="viewcode-block" id="StandardSnowball.pv_log_paths"><a class="viewcode-back" href="../../../_autosummary/qdpmc.structures.autocalls.StandardSnowball.html#qdpmc.structures.autocalls.StandardSnowball.pv_log_paths">[docs]</a>    <span class="nd">@DocstringWriter</span><span class="p">(</span><span class="n">_pv_log_paths_docs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">pv_log_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_paths</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">df_ko_obs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx_out</span><span class="p">]</span>
+        <span class="n">_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># find out KO time and indices of NKO paths</span>
+        <span class="n">ko_t_idx</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">nko_idx</span> <span class="o">=</span> <span class="n">up_ko_t_and_surviving_paths</span><span class="p">(</span><span class="n">log_paths</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_out</span><span class="p">],</span>
+                                                           <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_out</span><span class="p">,</span>
+                                                           <span class="n">return_idx</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># vector of present value of KO paths</span>
+        <span class="n">pv_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ko_coupon</span><span class="p">[</span><span class="n">ko_t_idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_ko_obs</span><span class="p">[</span><span class="n">ko_t_idx</span><span class="p">]</span>
+        <span class="c1"># NKO paths</span>
+        <span class="n">paths_nko</span> <span class="o">=</span> <span class="n">log_paths</span><span class="p">[</span><span class="n">nko_idx</span><span class="p">]</span>
+        <span class="c1"># KI paths</span>
+        <span class="n">ki_paths</span> <span class="o">=</span> <span class="n">down_ki_paths</span><span class="p">(</span><span class="n">paths_nko</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_in</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_in</span><span class="p">,</span>
+                                 <span class="n">return_idx</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># vector of present value of KO paths</span>
+        <span class="n">pv_in</span> <span class="o">=</span> <span class="o">-</span><span class="n">plain_vanilla</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ki_paths</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_strike</span><span class="p">,</span> <span class="n">option_type</span><span class="o">=</span><span class="s1">&#39;put&#39;</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">_df</span>
+        <span class="c1"># present value of paths NKI and NKO</span>
+        <span class="c1"># this is a scalar</span>
+        <span class="n">pv_full_c</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">log_paths</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pv_out</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pv_in</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">full_coupon</span> <span class="o">*</span> <span class="n">_df</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">pv_out</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="n">pv_in</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="n">pv_full_c</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">log_paths</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="UpOutDownIn"><a class="viewcode-back" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html#qdpmc.structures.autocalls.UpOutDownIn">[docs]</a><span class="k">class</span> <span class="nc">UpOutDownIn</span><span class="p">(</span><span class="n">StructureMC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">upper_barrier_out</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">,</span>
+            <span class="n">rebate_out</span><span class="p">,</span> <span class="n">lower_barrier_in</span><span class="p">,</span> <span class="n">ob_days_in</span><span class="p">,</span>
+            <span class="n">payoff_in</span><span class="p">,</span> <span class="n">payoff_nk</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A structured products with a high barrier and a low barrier. The high barrier</span>
+<span class="sd">        dominates the lower one in the sense that, when both a &quot;knock-out&quot; and a</span>
+<span class="sd">        &quot;knock-in&quot; occur during the life of the product, the status is determined as</span>
+<span class="sd">        &quot;knock-out&quot;.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        spot : scalar</span>
+<span class="sd">            The spot (i.e. on the valuation day) of the price of the underlying asset.</span>
+<span class="sd">        upper_barrier_out : scalar or array_like</span>
+<span class="sd">            The knock-out barrier level. Can be either a scalar</span>
+<span class="sd">            or an array. If a scalar is passed, it will be treated as the time-</span>
+<span class="sd">            invariant level of barrier. If an array is passed, it must match</span>
+<span class="sd">            the length of *ob_days_out*.</span>
+<span class="sd">        ob_days_out : array_like</span>
+<span class="sd">            A 1-D array of integers specifying observation days. Each of its elements</span>
+<span class="sd">            represents the number of days that an observation day is from the valuation</span>
+<span class="sd">            day.</span>
+<span class="sd">        rebate_out : scalar or array_like</span>
+<span class="sd">            The rebate of the option. If a constant is passed, then it will be</span>
+<span class="sd">            treated as the *time-invariant* rebate paid to the option holder. If an array</span>
+<span class="sd">            is passed, then it must match the length of *ob_days*.</span>
+<span class="sd">        lower_barrier_in : scalar or array_like</span>
+<span class="sd">            Similar to *upper_barrier_out*.</span>
+<span class="sd">        ob_days_in : array_like</span>
+<span class="sd">            Similar to *ob_days_out*.</span>
+<span class="sd">        payoff_in : Payoff</span>
+<span class="sd">            Applies when there is a &quot;knock-in&quot; but no &quot;knock-out&quot;.</span>
+<span class="sd">        payoff_nk : Payoff</span>
+<span class="sd">            Applies when there is neither &quot;knock-in&quot; nor &quot;knock-out&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Taken as is</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spot</span> <span class="o">=</span> <span class="n">spot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_out</span> <span class="o">=</span> <span class="n">ob_days_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ob_days_in</span> <span class="o">=</span> <span class="n">ob_days_in</span>
+        <span class="c1"># Convert to NumPy arrays</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upper_barrier_out</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">upper_barrier_out</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lower_barrier_in</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">lower_barrier_in</span><span class="p">,</span> <span class="n">ob_days_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rebate_out</span> <span class="o">=</span> <span class="n">arr_scalar_converter</span><span class="p">(</span><span class="n">rebate_out</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">)</span>
+        <span class="c1"># Wrapped payoff function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payoff_in</span> <span class="o">=</span> <span class="n">payoff_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">payoff_nk</span> <span class="o">=</span> <span class="n">payoff_nk</span>
+        <span class="c1"># Union of the observation day arrays</span>
+        <span class="c1"># Together with the spot day it consists the &quot;simulation day&quot; array</span>
+        <span class="n">_t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_out</span> <span class="o">=</span> <span class="n">merge_days</span><span class="p">(</span><span class="n">ob_days_in</span><span class="p">,</span> <span class="n">ob_days_out</span><span class="p">)</span>
+        <span class="c1"># Simulation day array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sim_t_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">_t</span><span class="p">)</span>
+        <span class="c1"># Log barriers relative to the spot price</span>
+        <span class="c1"># Note that they change every time self.spot is reset</span>
+        <span class="c1"># and thus should be appended to self._set_spot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upper_barrier_out</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lower_barrier_in</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_spot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Spot price should be positive.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spot</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="c1"># Do not forget to reset log barriers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upper_barrier_out</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lower_barrier_in</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UpOutDownIn.pv_log_paths"><a class="viewcode-back" href="../../../_autosummary/qdpmc.structures.autocalls.UpOutDownIn.html#qdpmc.structures.autocalls.UpOutDownIn.pv_log_paths">[docs]</a>    <span class="nd">@DocstringWriter</span><span class="p">(</span><span class="n">_pv_log_paths_docs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">pv_log_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_paths</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="n">df_ko_ob</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_idx_out</span><span class="p">]</span>
+        <span class="n">df_terminal</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Identify ko paths: ko time idx and nko path idx</span>
+        <span class="n">ko_t_idx</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">nko_paths_idx</span> <span class="o">=</span> <span class="n">up_ko_t_and_surviving_paths</span><span class="p">(</span>
+            <span class="n">paths</span><span class="o">=</span><span class="n">log_paths</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_out</span><span class="p">],</span> <span class="n">barrier</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_out</span><span class="p">,</span>
+            <span class="n">return_idx</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># nko paths</span>
+        <span class="n">nko_paths</span> <span class="o">=</span> <span class="n">log_paths</span><span class="p">[</span><span class="n">nko_paths_idx</span><span class="p">]</span>
+        <span class="c1"># Identify ki paths from nko paths</span>
+        <span class="n">ki_paths_idx</span> <span class="o">=</span> <span class="n">down_ki_paths</span><span class="p">(</span><span class="n">paths</span><span class="o">=</span><span class="n">nko_paths</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx_in</span><span class="p">],</span>
+                                     <span class="n">barrier</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">log_barrier_in</span><span class="p">,</span> <span class="n">return_idx</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># ki paths and nk paths</span>
+        <span class="n">ki_paths</span> <span class="o">=</span> <span class="n">nko_paths</span><span class="p">[</span><span class="n">ki_paths_idx</span><span class="p">]</span>
+        <span class="n">nk_paths</span> <span class="o">=</span> <span class="n">nko_paths</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">ki_paths_idx</span><span class="p">)]</span>
+        <span class="c1"># PV of payoff from three sets of paths</span>
+        <span class="n">pv_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rebate_out</span><span class="p">[</span><span class="n">ko_t_idx</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_ko_ob</span><span class="p">[</span><span class="n">ko_t_idx</span><span class="p">]</span>
+        <span class="n">pv_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">payoff_in</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ki_paths</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">)</span> <span class="o">*</span> <span class="n">df_terminal</span>
+        <span class="n">pv_nk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">payoff_nk</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">nk_paths</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">spot</span><span class="p">)</span> <span class="o">*</span> <span class="n">df_terminal</span>
+        <span class="c1"># Average three PVs</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">pv_out</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="n">pv_in</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="n">pv_nk</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">log_paths</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Yield Chain Technology Co., Ltd..
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
