@@ -9,7 +9,7 @@ import datetime
 from qdpmc.model.market_process import Heston
 
 hst = Heston(.03, 0, -.3, .0625, 1, .2, .0625, 252)
-calendar = Calendar()
+calendar = Calendar("China")
 
 start = datetime.date(2019, 1, 31)
 ko_ob_dates = calendar.periodic(start, '1M', 13, "next")[1:]
@@ -67,7 +67,7 @@ class test(TestCase):
     def test_calendar(self):
 
 
-        calendar = Calendar()
+        calendar = Calendar(market = "china")
         # start date of the contract
         start_date = datetime.date(2019, 1, 31)
         assert calendar.is_trading(start_date)

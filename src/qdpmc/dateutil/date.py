@@ -1,11 +1,7 @@
 # Todo: test Calendar.add_holidays and Calendar.add_holiday_rule
 
 import datetime
-from qdpmc.dateutil._china_holidays import _is_china_holidays
-
-__all__ = ['Calendar', 'CHINA_HOLIDAYS']
-
-CHINA_HOLIDAYS = _is_china_holidays
+import numpy as np
 
 _DAYS_IN_MONTH = [-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 _DAYS_BEFORE_MONTH = [-1]
@@ -39,48 +35,31 @@ def _next_month_same_day(date: datetime.date) -> datetime.date:
 
 
 class Calendar:
-    def __init__(self, holiday_rule=CHINA_HOLIDAYS, other_holidays=None):
-        # holiday rule taken as is
-        self._holiday_rule = holiday_rule
-        if other_holidays is None:
-            self.holiday_rule = holiday_rule
-            self._other_holidays = []
-        else:
-            def _holiday_rule(date):
-                return holiday_rule(date) or date in other_holidays
-            self.holiday_rule = _holiday_rule
-            self._other_holidays = other_holidays
+    def __init__(self, market: object):
+        holiday_dates = np.genfromtxt('/Users/luyu/PycharmProjects/qdpmc_github/src/qdpmc/dateutil/' + market + ".txt", delimiter="/n", usecols=(0), dtype=object, encoding=None)
+        holidays = [datetime.datetime.strptime(x.decode('ascii'), '%Y-%m-%d').date() for x in holiday_dates]
+        self.holidays = holidays
 
-    def add_holidays(self, holidays):
-        """Add holidays to holiday rules. *holidays* should be iterable"""
-        if not hasattr(holidays, "__iter__"):
-            raise TypeError("holidays must be iterable")
-        other_holidays = list(self._other_holidays) + list(holidays)
-        Calendar.__init__(self, self._holiday_rule, other_holidays)
+    def is_holiday(self, date: datetime.date) -> bool:
+        """Return if *date* is holiday.
 
-    def add_holiday_rule(self, holiday_rule):
-        """Add holiday rules.
+                Parameters
+                ----------
+                date : datetime.date
+                """
+        holidays = set(self.holidays)
+        if date in holidays:
+            return True
+        return date.weekday() > 4
 
-        Parameters
-        ----------
-        holiday_rule : callable
-            A function that converts datetime.date to bool.
-        """
-        if not callable(holiday_rule):
-            raise TypeError("holiday_rule must be callable")
-
-        def _holiday_rule(date):
-            return self._holiday_rule(date) or holiday_rule(date)
-        Calendar.__init__(self, _holiday_rule, self._other_holidays)
-
-    def is_trading(self, date: datetime.date):
+    def is_trading(self, date: datetime.date) -> bool:
         """Return if *date* trades.
 
         Parameters
         ----------
         date : datetime.date
         """
-        return date.weekday() < 5 and not self.holiday_rule(date)
+        return not self.is_holiday(date)
 
     def trading_days_between(
             self,
