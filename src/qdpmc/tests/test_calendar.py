@@ -6,7 +6,6 @@ calendar = Calendar(market="china")
 class Calendar_test(unittest.TestCase):
     '''
     Test calendar
-
     '''
     def test_trading(self):
         self.assertAlmostEqual(calendar.is_trading(datetime.date(2021,1,4)), True)
