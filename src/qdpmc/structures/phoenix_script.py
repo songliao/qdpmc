@@ -1,4 +1,4 @@
-#raw script of phoenix option
+# raw script of phoenix option
 import time
 import numpy as np
 from scipy.stats import norm
@@ -20,19 +20,19 @@ r = 0.02
 q = 0.0
 v = 0.35
 notional_principal = 100
-dt = 1/252
+dt = 1 / 243
 valuation_date = datetime.date(2021, 3, 15)
 is_already_knockedin = False
 
 start_date = datetime.date(2021, 3, 15)
 maturity_date = datetime.date(2022, 3, 15)
 ko_ob_dates = calendar.periodic(start=start_date, period="1m", count=13,
-                                        if_close="next")[1:]
+                                if_close="next")[1:]
 
 # monte carlo simulation
 # prepare mc simulation parameters
 # ttm: 243
-days_to_maturity = calendar.num_trading_days_between(start_date,maturity_date)
+days_to_maturity = calendar.num_trading_days_between(start_date, maturity_date)
 ko_ob_days = []
 coupons = []
 discount_factor = []
@@ -41,40 +41,50 @@ for date in ko_ob_dates:
     if date > valuation_date:
         ko_ob_days.append(calendar.num_trading_days_between(valuation_date, date))
         coupons.append(coupon_rate * notional_principal)
-        discount_factor.append(np.exp(-r * calendar.num_trading_days_between(valuation_date, date)*dt))
+        discount_factor.append(np.exp(-r * calendar.num_trading_days_between(valuation_date, date) * dt))
 
 ki_ob_days = np.arange(1, days_to_maturity + 1)
+ki_ob_days = np.arange(1, days_to_maturity + 1)
+
+vol_sqrt_dt = v * np.sqrt(dt)
+drift = (r - q - 0.5 * v * v) * dt
+
+log_coupon_barrier = np.log(coupon_barrier)
+log_ko_barriers = np.log(ko_barrier)
+log_ki_barriers = np.log(ki_barrier)
+
+
+def check_if_knock_in(logpath, logbarrier):
+    comp = logpath < logbarrier
+    if np.any(comp):
+        return True, np.argmax(comp)
+    else:
+        return False, 0
+
 
 def mc_simulation(n):
     payoff = 0.0
     knock_in = is_already_knockedin
 
-    eps = norm.rvs(size=int(days_to_maturity))
-    rt = np.array([0])
-    rt = np.append(rt, (r - q - 0.5 * v * v) * dt + v * np.sqrt(dt) * eps)
-    st = spot * np.exp(rt.cumsum())
+    eps = np.random.normal(0, 1, int(days_to_maturity))
+    logst = (drift + vol_sqrt_dt * eps).cumsum() + np.log(spot)
 
+    # coupon is accumulated and paid immediately when st > coupon barrier
     for i in range(len(ko_ob_days)):
-        od = int(ko_ob_days[i])
+        od = int(ko_ob_days[i]) - 1
         # coupon is accumulated and paid immediately when st > coupon barrier
-        if st[od] >= coupon_barrier:
+        if logst[od] >= log_coupon_barrier:
             payoff += coupons[i] * discount_factor[i]
         # option is terminated at knocking out
-        if st[od] >= ko_barrier:
+        if logst[od] >= log_ko_barriers:
             return payoff
 
-    if not knock_in:
-        # check if knock in
-        for i in range(len(ki_ob_days)):
-            od = int(ki_ob_days[i])
-            if st[od] < ki_barrier:
-                knock_in = True
-                break
+    knock_in, knock_in_t = check_if_knock_in(logst, log_ki_barriers)
 
     # terminal
     if knock_in:
         # if ever knocked in
-        return payoff - max(ki_strike - st[-1], 0) / spot * notional_principal * discount_factor[-1]
+        return payoff - max(ki_strike - np.exp(logst[-1]), 0) / spot * notional_principal * discount_factor[-1]
     else:
         # if never knocked in
         return payoff

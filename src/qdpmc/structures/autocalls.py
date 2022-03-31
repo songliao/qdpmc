@@ -15,7 +15,6 @@ Monte Carlo pricing of barrier options. It allows for
 * Time-varying level for both knock-out barrier and knock-in barrier.
 """
 
-
 import numpy as np
 from qdpmc.tools.helper import (
     up_ko_t_and_surviving_paths,
@@ -28,8 +27,7 @@ from qdpmc.structures.base import StructureMC
 from qdpmc.structures._docs import _pv_log_paths_docs
 from qdpmc._decorators import DocstringWriter
 
-
-__all__ = ['StandardSnowball', 'UpOutDownIn']
+__all__ = ['StandardSnowball', 'UpOutDownIn', 'Phoenix']
 
 
 class StandardSnowball(StructureMC):
@@ -132,7 +130,7 @@ class StandardSnowball(StructureMC):
                                  return_idx=False)
         # vector of present value of KO paths
         pv_in = -plain_vanilla(
-            np.exp(ki_paths[:, -1])*self.spot, self._strike, option_type='put'
+            np.exp(ki_paths[:, -1]) * self.spot, self._strike, option_type='put'
         ) * _df
         # present value of paths NKI and NKO
         # this is a scalar
@@ -229,3 +227,8 @@ class UpOutDownIn(StructureMC):
         pv_nk = self.payoff_nk(np.exp(nk_paths[:, -1]) * self.spot) * df_terminal
         # Average three PVs
         return (pv_out.sum() + pv_in.sum() + pv_nk.sum()) / len(log_paths)
+
+
+# todo: add pheonix option here
+class Phoenix(StructureMC):
+    pass
