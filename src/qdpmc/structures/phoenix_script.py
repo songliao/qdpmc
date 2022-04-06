@@ -8,7 +8,7 @@ import datetime
 
 # market calendar and day count conventions
 calendar = Calendar(market="china")
-
+is_already_knockedin = False
 # define the phoenix
 spot = 100
 ko_barrier = spot * 1.00
@@ -79,7 +79,8 @@ def mc_simulation(n):
         if logst[od] >= log_ko_barriers:
             return payoff
 
-    knock_in, knock_in_t = check_if_knock_in(logst, log_ki_barriers)
+    if not knock_in:
+        knock_in, _ = check_if_knock_in(logst, log_ki_barriers)
 
     # terminal
     if knock_in:
