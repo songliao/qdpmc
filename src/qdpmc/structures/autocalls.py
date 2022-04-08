@@ -229,6 +229,52 @@ class UpOutDownIn(StructureMC):
         return (pv_out.sum() + pv_in.sum() + pv_nk.sum()) / len(log_paths)
 
 
-# todo: add pheonix option here
 class Phoenix(StructureMC):
-    pass
+    def __init__(self, spot, ko_days, ko_barriers, coupon_barriers, coupons, ki_days, ki_barriers, ki_strike, ki_flag):
+        """A standard pheonix option structure"""
+        self._spot = spot
+        self._strike = spot
+        self.ko_barriers = arr_scalar_converter(ko_barriers, ko_days)
+        self.coupon_barriers = arr_scalar_converter(coupon_barriers, ko_days)
+        self.ki_barriers = arr_scalar_converter(ki_barriers, ki_days)
+        self.ko_days = ko_days
+        self.ki_days = ki_days
+        #todo:wrap ki_payoff
+        self.ki_strike = ki_strike
+        self.ki_flag = ki_flag
+        self.coupons = arr_scalar_converter(coupons, ko_days)
+        self.log_barrier_coupon = np.log(self.coupon_barriers / spot)
+        self.log_barrier_in = np.log(self.ki_barriers / spot)
+        self.log_barrier_out = np.log(self.ko_barriers / spot)
+
+        _t, self._idx_in, self._idx_out = merge_days(ko_days, ki_days)
+        self._sim_t_array = np.append([0], _t)
+
+    def _set_spot(self, val):
+        if val <= 0:
+            raise ValueError("Spot price should be positive.")
+        self._spot = val
+        # do not forget to reset log barriers
+        self.log_barrier_coupon = np.log(self.coupon_barriers / val)
+        self.log_barrier_in = np.log(self.ki_barriers / val)
+        self.log_barrier_out = np.log(self.ko_barriers / val)
+
+    @DocstringWriter(_pv_log_paths_docs)
+    def pv_log_paths(self, log_paths, df):
+        df_terminal = df[-1]
+
+        #todo: need to test below
+        payoff = 0.0
+        for i in range(len(log_paths)):
+            for j in range(len(self.ko_days)):
+                od = int(self.ko_days[j]) - 1
+                if log_paths[:, od] >= self.coupon_barriers:
+                    payoff += self.coupons[j] * df[self._idx_out]
+                if log_paths[:, od] >= self.ko_barriers:
+                    break
+
+            if np.any(log_paths[:, i] < self.log_barrier_in) or self.ki_flag:
+                payoff -= - max(self.ki_strike - np.exp(log_paths[:, -1]) * self.spot, 0) * df_terminal
+
+        return payoff/len(log_paths)
+

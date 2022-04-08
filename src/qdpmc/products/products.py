@@ -314,6 +314,9 @@ class SnowballProd:
         else:
             return self.maturity_date, rebates[-1]
 
+class PhoenixOption:
+    pass
+
 
 class SingleBarrierOption:
     _structure = structures.SingleBarrierOption
